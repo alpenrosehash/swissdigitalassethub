@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Swiss Digital Asset Hub — Switzerland ↔ Korea</title>
+  <meta name="description" content="Institutional digital assets, market entry and strategic partnerships between Switzerland and Korea.">
+  <style>
+    :root{
+      --ivory:#f4f0e8;
+      --paper:#fbfaf7;
+      --ink:#1c2221;
+      --muted:#6b716f;
+      --line:#d8d3c9;
+      --deep:#13201d;
+      --red:#b0282f;
+      --max:1320px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:var(--paper);
+      color:var(--ink);
+      font-family:Arial, Helvetica, sans-serif;
+      -webkit-font-smoothing:antialiased;
+    }
+    a{text-decoration:none;color:inherit}
+    .wrap{width:min(calc(100% - 56px),var(--max));margin:auto}
+    .label{
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      font-size:10px;
+      color:var(--muted)
+    }
+
+    header{
+      position:absolute;top:0;left:0;right:0;z-index:30;
+      color:white;
+    }
+    .nav{
+      height:88px;
+      display:flex;align-items:center;justify-content:space-between;
+      gap:30px
+    }
+    .brand{display:flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.09em;font-weight:700}
+    .logo{
+      width:34px;height:34px;border:1px solid rgba(255,255,255,.65);
+      display:grid;place-items:center;font-size:9px;letter-spacing:.06em
+    }
+    nav{display:flex;gap:28px;font-size:12px}
+    nav a{opacity:.84}
+    nav a:hover{opacity:1}
+
+    .hero{
+      min-height:100vh;
+      position:relative;
+      display:flex;
+      align-items:flex-end;
+      color:#fff;
+      background:
+      linear-gradient(90deg,rgba(12,19,17,.84),rgba(12,19,17,.44) 48%,rgba(12,19,17,.10)),
+      url("https://images.unsplash.com/photo-1643981670720-eef07ebdb179?auto=format&fit=crop&q=85&w=2200") center 46%/cover no-repeat;
+    }
+    .hero::after{
+      content:"";position:absolute;left:0;top:0;width:5px;height:100%;
+      background:var(--red)
+    }
+    .hero-inner{position:relative;z-index:2;padding:180px 0 72px}
+    .hero .label{color:#d7dad7}
+    h1{
+      margin:22px 0 0;
+      max-width:1050px;
+      font-family:Georgia,"Times New Roman",serif;
+      font-weight:400;
+      font-size:clamp(64px,8vw,122px);
+      line-height:.9;
+      letter-spacing:-.055em
+    }
+    .hero-meta{
+      margin-top:64px;
+      padding-top:18px;
+      border-top:1px solid rgba(255,255,255,.45);
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr;
+      font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+      color:#d8dbd8
+    }
+    .hero-meta div:nth-child(2){text-align:center}
+    .hero-meta div:last-child{text-align:right}
+
+    .intro{padding:140px 0;background:var(--ivory)}
+    .intro-grid{
+      display:grid;grid-template-columns:.55fr 1.45fr;
+      gap:100px;align-items:start
+    }
+    .intro h2{
+      margin:0;
+      max-width:940px;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(42px,5.1vw,76px);
+      line-height:1.02;
+      font-weight:400;
+      letter-spacing:-.04em
+    }
+    .intro-copy{
+      margin-top:34px;
+      max-width:700px;
+      font-size:16px;
+      line-height:1.8;
+      color:#5c625f
+    }
+    .red-rule{width:38px;height:2px;background:var(--red);margin-top:38px}
+
+    .editorial{
+      display:grid;grid-template-columns:1.2fr .8fr;
+      min-height:760px
+    }
+    .photo{
+      position:relative;
+      background-size:cover;background-position:center;
+      min-height:700px
+    }
+    .photo.zug{
+      background-image:
+      linear-gradient(rgba(10,17,16,.08),rgba(10,17,16,.18)),
+      url("https://upload.wikimedia.org/wikipedia/commons/6/67/Zug-Zugersee.jpg");
+    }
+    .editorial-copy{
+      padding:90px 7vw;
+      background:#fff;
+      display:flex;flex-direction:column;justify-content:center
+    }
+    .editorial-copy h3{
+      margin:18px 0 28px;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(40px,4.2vw,64px);
+      line-height:1.02;font-weight:400;letter-spacing:-.04em
+    }
+    .editorial-copy p{
+      max-width:520px;margin:0;
+      font-size:15px;line-height:1.8;color:#626763
+    }
+    .micro{
+      margin-top:36px;padding-top:16px;border-top:1px solid var(--line);
+      display:flex;justify-content:space-between;gap:25px;
+      font-size:11px;color:#737975;text-transform:uppercase;letter-spacing:.1em
+    }
+
+    .bridge{padding:150px 0;background:var(--deep);color:white}
+    .bridge .label{color:#aeb7b3}
+    .bridge h2{
+      margin:24px 0 70px;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(58px,8vw,118px);
+      line-height:.9;font-weight:400;letter-spacing:-.055em;
+      max-width:1100px
+    }
+    .bridge h2 em{font-style:normal;color:#d7d9d5}
+    .route{
+      display:grid;grid-template-columns:1fr 120px 1fr;
+      border-top:1px solid #4e5c57;border-bottom:1px solid #4e5c57;
+      padding:34px 0;align-items:center
+    }
+    .route .city{
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(34px,4vw,56px)
+    }
+    .route .city:last-child{text-align:right}
+    .route .arrow{text-align:center;font-size:25px;color:#9ca9a4}
+    .bridge-copy{
+      margin-top:44px;
+      display:grid;grid-template-columns:1fr 1fr;gap:80px
+    }
+    .bridge-copy p{margin:0;max-width:540px;color:#bcc5c1;line-height:1.8;font-size:14px}
+
+    .seoul{
+      display:grid;grid-template-columns:.78fr 1.22fr;
+      min-height:760px;background:#fff
+    }
+    .seoul-copy{
+      padding:90px 7vw;display:flex;flex-direction:column;justify-content:center
+    }
+    .seoul-copy h3{
+      margin:18px 0 28px;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(40px,4.2vw,64px);
+      line-height:1.02;font-weight:400;letter-spacing:-.04em
+    }
+    .seoul-copy p{margin:0;color:#616762;line-height:1.8;font-size:15px}
+    .photo.seoul-img{
+      background-image:
+      linear-gradient(rgba(14,18,18,.05),rgba(14,18,18,.15)),
+      url("https://images.unsplash.com/photo-1599014954148-ca560ffea964?auto=format&fit=crop&q=85&w=1800");
+    }
+
+    .expertise{padding:130px 0;background:var(--ivory)}
+    .expertise-top{
+      display:grid;grid-template-columns:.55fr 1.45fr;gap:100px;
+      margin-bottom:70px
+    }
+    .expertise h2{
+      margin:0;
+      font-family:Georgia,"Times New Roman",serif;
+      font-weight:400;font-size:clamp(44px,5vw,72px);
+      line-height:1;letter-spacing:-.04em
+    }
+    .services{border-top:1px solid #aaa69e}
+    .service{
+      display:grid;grid-template-columns:70px 1.15fr 1fr;
+      gap:30px;padding:34px 0;border-bottom:1px solid #c0bbb1
+    }
+    .num{font-size:11px;letter-spacing:.1em;color:#787d78}
+    .service h3{
+      margin:0;font-family:Georgia,"Times New Roman",serif;
+      font-size:30px;font-weight:400
+    }
+    .service p{margin:0;font-size:14px;line-height:1.7;color:#666b66}
+
+    .statement{padding:155px 0;text-align:center;background:#fff}
+    .statement .red-rule{margin:0 auto 34px}
+    .statement h2{
+      margin:0 auto;
+      max-width:980px;
+      font-family:Georgia,"Times New Roman",serif;
+      font-weight:400;
+      font-size:clamp(48px,6vw,86px);
+      line-height:1.03;letter-spacing:-.045em
+    }
+    .statement p{margin:30px auto 0;max-width:670px;color:#6a706d;font-size:14px;line-height:1.8}
+
+    .identity{
+      padding:140px 0;
+      background:#ece8df;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line)
+    }
+    .identity-grid{
+      display:grid;
+      grid-template-columns:.7fr 1.3fr;
+      gap:90px;
+      align-items:start
+    }
+    .identity-copy h2{
+      margin:0;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(46px,5.2vw,76px);
+      line-height:1;
+      font-weight:400;
+      letter-spacing:-.04em
+    }
+    .identity-copy p{
+      margin:28px 0 0;
+      max-width:690px;
+      color:#626762;
+      line-height:1.8;
+      font-size:15px
+    }
+    .identity-graphic{
+      margin-top:70px;
+      border-top:1px solid #a9a49b;
+      border-bottom:1px solid #a9a49b;
+      padding:32px 0
+    }
+    .identity-line{
+      display:grid;
+      grid-template-columns:1fr 90px 1fr;
+      align-items:center;
+      gap:20px
+    }
+    .identity-country{
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:clamp(38px,4.4vw,66px);
+      line-height:1
+    }
+    .identity-country:last-child{text-align:right}
+    .identity-arrow{text-align:center;font-size:24px;color:#7a807b}
+    .identity-tags{
+      margin-top:28px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px
+    }
+    .identity-tag{
+      border-top:1px solid #c2bdb4;
+      padding-top:14px;
+      font-size:11px;
+      letter-spacing:.1em;
+      text-transform:uppercase;
+      color:#737873
+    }
+
+    .founder-note{
+      padding:72px 0;
+      background:#f6f3ec
+    }
+    .founder-note-grid{
+      display:grid;
+      grid-template-columns:.55fr 1.45fr;
+      gap:100px
+    }
+    .founder-note h3{
+      margin:0 0 12px;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:34px;
+      font-weight:400;
+      letter-spacing:-.02em
+    }
+    .founder-note .role{
+      font-size:12px;
+      color:#787d78;
+      margin-bottom:18px
+    }
+    .founder-note p{
+      margin:0;
+      max-width:720px;
+      color:#626762;
+      line-height:1.8;
+      font-size:14px
+    }
+    .founder-facts{
+      margin-top:28px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:22px;
+      font-size:11px;
+      text-transform:uppercase;
+      letter-spacing:.1em;
+      color:#737873
+    }
+
+    .contact{padding:120px 0 50px;background:#171d1b;color:#fff}
+    .contact .label{color:#9fa7a3}
+    .contact h2{
+      margin:26px 0 76px;
+      max-width:1100px;
+      font-family:Georgia,"Times New Roman",serif;
+      font-weight:400;font-size:clamp(52px,7vw,96px);
+      line-height:.96;letter-spacing:-.05em
+    }
+    .contact-grid{
+      display:grid;grid-template-columns:1fr 1fr;gap:60px;
+      border-top:1px solid #48504d;padding-top:25px;
+      color:#c3c8c5;font-size:13px;line-height:1.7
+    }
+    .contact a{color:white;border-bottom:1px solid #8c9490;padding-bottom:3px}
+    footer{background:#171d1b;color:#858c88;padding:34px 0}
+    .footer{border-top:1px solid #333b38;padding-top:24px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:11px}
+
+    @media(max-width:900px){
+      nav{display:none}
+      .intro-grid,.expertise-top,.identity-grid,.founder-note-grid{grid-template-columns:1fr;gap:38px}
+      .editorial,.seoul{grid-template-columns:1fr}
+      .photo,.photo.zug,.photo.seoul-img{min-height:520px}
+      .editorial-copy,.seoul-copy{padding:72px 28px}
+      .bridge-copy,.contact-grid{grid-template-columns:1fr}
+      .service{grid-template-columns:50px 1fr}
+      .service p{grid-column:2}
+      .identity-tags{grid-template-columns:1fr}
+    }
+    @media(max-width:620px){
+      .wrap{width:min(calc(100% - 30px),var(--max))}
+      .hero{min-height:90vh}
+      .hero-inner{padding-bottom:46px}
+      h1{font-size:55px}
+      .hero-meta{grid-template-columns:1fr;gap:10px}
+      .hero-meta div:nth-child(2),.hero-meta div:last-child{text-align:left}
+      .intro,.expertise,.bridge,.statement,.identity{padding:90px 0}
+      .route,.identity-line{grid-template-columns:1fr;gap:12px}
+      .route .city:last-child,.identity-country:last-child{text-align:left}
+      .route .arrow,.identity-arrow{text-align:left;transform:rotate(90deg);width:max-content}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top"><span class="logo">SDAH</span><span>SWISS DIGITAL ASSET HUB</span></a>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#bridge">Switzerland ↔ Korea</a>
+      <a href="#expertise">Expertise</a>
+      <a href="#identity">Who We Are</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div class="label">Institutional Digital Assets · Cross-Border Advisory</div>
+      <h1>Swiss precision.<br>Korean momentum.</h1>
+      <div class="hero-meta">
+        <div>Zurich</div>
+        <div>Zug</div>
+        <div>Seoul</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="intro" id="about">
+    <div class="wrap intro-grid">
+      <div class="label">Our point of view</div>
+      <div>
+        <h2>Digital finance moves fast. Trust is built more carefully.</h2>
+        <p class="intro-copy">
+          Swiss Digital Asset Hub is an independent Switzerland-based platform connecting
+          institutional finance, digital-asset expertise and business opportunities between
+          Switzerland and Korea. We focus on what matters most in cross-border business:
+          relevant access, market context and trusted relationships.
+        </p>
+        <div class="red-rule"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="editorial">
+    <div class="photo zug" aria-label="Lake Zug with the Swiss Alps"></div>
+    <div class="editorial-copy">
+      <div class="label">Zug · From within</div>
+      <h3>Close to the institutions shaping digital finance.</h3>
+      <p>
+        Switzerland combines regulated banking, digital-asset infrastructure,
+        asset management and one of the world's most established blockchain ecosystems.
+        Our role is to make this market more accessible to the right Korean institutions.
+      </p>
+      <div class="micro">
+        <span>Banking</span><span>Custody</span><span>Tokenisation</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="bridge" id="bridge">
+    <div class="wrap">
+      <div class="label">Switzerland ↔ Korea</div>
+      <h2>Not a network.<br><em>A working bridge.</em></h2>
+
+      <div class="route">
+        <div class="city">Zurich / Zug</div>
+        <div class="arrow">↔</div>
+        <div class="city">Seoul</div>
+      </div>
+
+      <div class="bridge-copy">
+        <p>
+          For Swiss digital-asset firms, we support Korea market positioning,
+          institutional business development, partner identification and strategic introductions.
+        </p>
+        <p>
+          For Korean financial institutions, we curate relevant access to Swiss banks,
+          digital-asset firms, asset managers, infrastructure providers and ecosystem expertise.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="seoul">
+    <div class="seoul-copy">
+      <div class="label">Korea · The other side</div>
+      <h3>Understanding capital, technology and timing.</h3>
+      <p>
+        Korea is a sophisticated financial and technology market with its own regulatory,
+        institutional and cultural dynamics. Effective market entry requires more than translation.
+        It requires context, positioning and the right conversations.
+      </p>
+      <div class="red-rule"></div>
+    </div>
+    <div class="photo seoul-img" aria-label="Seoul financial district"></div>
+  </section>
+
+  <section class="expertise" id="expertise">
+    <div class="wrap">
+      <div class="expertise-top">
+        <div class="label">Expertise</div>
+        <h2>Focused where institutional finance meets digital assets.</h2>
+      </div>
+
+      <div class="services">
+        <div class="service">
+          <div class="num">01</div>
+          <h3>Institutional Digital Assets</h3>
+          <p>Custody, banking, ETP/ETF structures, tokenised assets, stablecoins and institutional infrastructure.</p>
+        </div>
+        <div class="service">
+          <div class="num">02</div>
+          <h3>Market Entry</h3>
+          <p>Market mapping, positioning, local context and institutional go-to-market support between Switzerland and Korea.</p>
+        </div>
+        <div class="service">
+          <div class="num">03</div>
+          <h3>Strategic Partnerships</h3>
+          <p>Business development across banks, asset managers, digital-asset firms and strategic technology partners.</p>
+        </div>
+        <div class="service">
+          <div class="num">04</div>
+          <h3>Executive Access</h3>
+          <p>Curated meetings, executive visits and high-value engagement with Switzerland's financial and digital-asset ecosystem.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="statement">
+    <div class="wrap">
+      <div class="red-rule"></div>
+      <h2>Less visibility for its own sake.<br>More access that leads somewhere.</h2>
+      <p>
+        We believe cross-border advisory is most valuable when it is selective,
+        informed and built around meaningful institutional outcomes.
+      </p>
+    </div>
+  </section>
+
+  <section class="identity" id="identity">
+    <div class="wrap identity-grid">
+      <div class="label">Who we are</div>
+      <div class="identity-copy">
+        <h2>Built around two markets, not one personality.</h2>
+        <p>
+          Swiss Digital Asset Hub is positioned as an institutional bridge between
+          Switzerland and Korea. The platform is designed around market access,
+          trusted relationships and digital-finance expertise rather than a founder-led personal brand.
+        </p>
+
+        <div class="identity-graphic">
+          <div class="identity-line">
+            <div class="identity-country">Switzerland</div>
+            <div class="identity-arrow">↔</div>
+            <div class="identity-country">Korea</div>
+          </div>
+        </div>
+
+        <div class="identity-tags">
+          <div class="identity-tag">Institutional Digital Assets</div>
+          <div class="identity-tag">Cross-Border Business</div>
+          <div class="identity-tag">Strategic Access</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="founder-note">
+    <div class="wrap founder-note-grid">
+      <div class="label">Founder</div>
+      <div>
+        <h3>Ji Young (Rosa) Suk</h3>
+        <div class="role">Founder · Swiss Digital Asset Hub</div>
+        <p>
+          Based in Switzerland since 2017, Rosa Suk works at the intersection of Swiss
+          digital finance and the Korean institutional market, with a focus on
+          institutional digital assets, cross-border business development and long-term partnerships.
+        </p>
+        <div class="founder-facts">
+          <span>CCFE</span>
+          <span>Computer Science</span>
+          <span>Switzerland ↔ Korea</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="label">Start a conversation</div>
+      <h2>Two markets.<br>One conversation to begin.</h2>
+      <div class="contact-grid">
+        <div>Institutional digital assets · Market entry · Strategic partnerships · Executive access</div>
+        <div>Switzerland / Korea<br><br>
+          <a href="mailto:contact@swissdigitalassethub.ch">contact@swissdigitalassethub.ch</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer">
+    <span>SWISS DIGITAL ASSET HUB</span>
+    <span>Zurich · Zug · Seoul</span>
+    <span>© <span id="year"></span></span>
+    <span>Lake Zug photo: GabrielleMerk / Wikimedia Commons · CC BY-SA 4.0</span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
