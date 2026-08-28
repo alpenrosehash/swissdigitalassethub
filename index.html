@@ -218,6 +218,19 @@
     }
     .service p{margin:0;font-size:20px;line-height:1.7;color:#666b66}
 
+
+    .market-access{padding:140px 0;background:#fff;border-top:1px solid var(--line)}
+    .market-access-top{display:grid;grid-template-columns:.55fr 1.45fr;gap:100px;margin-bottom:58px}
+    .market-access h2{margin:0;font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:clamp(32px,3.8vw,52px);line-height:1;letter-spacing:-.04em}
+    .access-flow{display:grid;grid-template-columns:1fr 58px 1fr 58px 1fr;align-items:stretch;border-top:1px solid #aaa69e;border-bottom:1px solid #aaa69e;padding:30px 0}
+    .access-node{padding:22px 22px 22px 0}
+    .access-node .eyebrow{font-size:16px;letter-spacing:.09em;text-transform:uppercase;color:#7a807b;margin-bottom:14px}
+    .access-node h3{margin:0 0 14px;font-family:Georgia,"Times New Roman",serif;font-size:27px;font-weight:400}
+    .access-node p{margin:0;font-size:19px;line-height:1.7;color:#666b66}
+    .access-arrow{display:grid;place-items:center;font-size:24px;color:#9a9f9b}
+    .access-note{margin-top:34px;display:grid;grid-template-columns:1fr 1fr;gap:60px}
+    .access-note p{margin:0;font-size:20px;line-height:1.75;color:#626762}
+
     .statement{padding:155px 0;text-align:center;background:#fff}
     .statement .red-rule{margin:0 auto 34px}
     .statement h2{
@@ -386,7 +399,10 @@
       .editorial,.seoul{grid-template-columns:1fr}
       .photo,.photo.zug,.photo.seoul-img{min-height:520px}
       .editorial-copy,.seoul-copy{padding:72px 28px}
-      .bridge-copy,.contact-grid{grid-template-columns:1fr}
+      .bridge-copy,.contact-grid,.access-note{grid-template-columns:1fr}
+      .market-access-top{grid-template-columns:1fr;gap:38px}
+      .access-flow{grid-template-columns:1fr;gap:18px}
+      .access-arrow{justify-content:start;transform:rotate(90deg);width:max-content}
       .service{grid-template-columns:50px 1fr}
       .service p{grid-column:2}
       .identity-tags{grid-template-columns:1fr}
@@ -414,6 +430,7 @@
       <a href="#about" data-i18n="nav_about">About</a>
       <a href="#bridge" data-i18n="nav_bridge">Switzerland ↔ Korea</a>
       <a href="#expertise" data-i18n="nav_expertise">Expertise</a>
+       <a href="#market-access" data-i18n="nav_market_access">Market Access</a>
       <a href="#advisory" data-i18n="nav_advisory">Advisory Network</a>
       <a href="#contact" data-i18n="nav_contact">Contact</a>
       <div class="lang-switch" aria-label="Language">
@@ -484,10 +501,42 @@
         <h2 data-i18n="expertise_title">Focused where institutional finance meets digital assets.</h2>
       </div>
       <div class="services">
-        <div class="service"><div class="num">01</div><h3 data-i18n="service1_title">Institutional Digital Assets</h3><p data-i18n="service1_copy">Custody, banking, ETP/ETF structures, tokenised assets, stablecoins and institutional infrastructure.</p></div>
+        <div class="service"><div class="num">01</div><h3 data-i18n="service1_title">Institutional Digital Assets</h3><p data-i18n="service1_copy">Custody, banking, ETF/ETP structures, tokenised assets, stablecoins, execution and institutional infrastructure.</p></div>
         <div class="service"><div class="num">02</div><h3 data-i18n="service2_title">Market Entry</h3><p data-i18n="service2_copy">Market mapping, positioning, local context and institutional go-to-market support between Switzerland and Korea.</p></div>
-        <div class="service"><div class="num">03</div><h3 data-i18n="service3_title">Strategic Partnerships</h3><p data-i18n="service3_copy">Business development across banks, asset managers, digital-asset firms and strategic technology partners.</p></div>
-        <div class="service"><div class="num">04</div><h3 data-i18n="service4_title">Executive Access</h3><p data-i18n="service4_copy">Curated meetings, executive visits and high-value engagement with Switzerland's financial and digital-asset ecosystem.</p></div>
+        <div class="service"><div class="num">03</div><h3 data-i18n="service3_title">Strategic Partnerships</h3><p data-i18n="service3_copy">Business development across banks, asset managers, wealth managers, brokers, digital-asset firms and strategic technology partners.</p></div>
+        <div class="service"><div class="num">04</div><h3 data-i18n="service4_title">Executive Access</h3><p data-i18n="service4_copy">Curated meetings, institutional IR, executive visits and high-value engagement with Switzerland's financial and digital-asset ecosystem.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="market-access" id="market-access">
+    <div class="wrap">
+      <div class="market-access-top">
+        <div class="label" data-i18n="market_access_label">Institutional Market Access</div>
+        <h2 data-i18n="market_access_title">From product strategy to institutional access and execution.</h2>
+      </div>
+      <div class="access-flow">
+        <div class="access-node">
+          <div class="eyebrow" data-i18n="access1_eyebrow">Asian Financial Institutions</div>
+          <h3 data-i18n="access1_title">Products &amp; Strategy</h3>
+          <p data-i18n="access1_copy">ETF/ETP strategies, tokenised products, RWA initiatives and cross-border expansion plans.</p>
+        </div>
+        <div class="access-arrow">→</div>
+        <div class="access-node">
+          <div class="eyebrow">SDAH</div>
+          <h3 data-i18n="access2_title">Swiss Institutional Desk</h3>
+          <p data-i18n="access2_copy">Market intelligence, positioning, investor mapping, strategic introductions and Swiss institutional IR support.</p>
+        </div>
+        <div class="access-arrow">→</div>
+        <div class="access-node">
+          <div class="eyebrow" data-i18n="access3_eyebrow">European &amp; Swiss Ecosystem</div>
+          <h3 data-i18n="access3_title">Distribution &amp; Execution</h3>
+          <p data-i18n="access3_copy">Connections to wealth managers, asset managers, banks, brokers and infrastructure providers across traditional and digital markets.</p>
+        </div>
+      </div>
+      <div class="access-note">
+        <p data-i18n="access_note1">We support financial institutions entering Switzerland and Europe with a selective institutional approach — from market mapping and meetings to execution-ecosystem partnerships.</p>
+        <p data-i18n="access_note2">For Swiss and European firms, we provide a route into Korea through local positioning, relevant decision-makers and cross-border business development.</p>
       </div>
     </div>
   </section>
@@ -539,7 +588,7 @@
       <div class="label" data-i18n="contact_label">Start a conversation</div>
       <h2 data-i18n-html="contact_title">Two markets.<br>One conversation to begin.</h2>
       <div class="contact-grid">
-        <div data-i18n="contact_services">Institutional digital assets · Market entry · Strategic partnerships · Executive access</div>
+        <div data-i18n="contact_services">Institutional digital assets · Market access · ETF/ETP · Strategic partnerships · Executive access</div>
         <div><span data-i18n="contact_region">Switzerland / Korea</span><br><br><a href="mailto:info@swissdigitalassethub.ch">info@swissdigitalassethub.ch</a></div>
       </div>
     </div>
@@ -555,20 +604,21 @@
 <script>
 const translations={
 en:{
-nav_about:"About",nav_bridge:"Switzerland ↔ Korea",nav_expertise:"Expertise",nav_advisory:"Advisory Network",nav_contact:"Contact",
+nav_about:"About",nav_bridge:"Switzerland ↔ Korea",nav_expertise:"Expertise",nav_market_access:"Market Access",nav_advisory:"Advisory Network",nav_contact:"Contact",
 hero_label:"Institutional Digital Assets · Cross-Border Advisory",hero_title:"Swiss trust.<br>Korean momentum.",
 intro_label:"Our point of view",intro_title:"Digital finance moves fast. Trust is built more carefully.",intro_copy:"Swiss Digital Asset Hub is an independent Switzerland-based platform connecting institutional finance, digital-asset expertise and business opportunities between Switzerland and Korea. We focus on what matters most in cross-border business: relevant access, market context and trusted relationships.",
 swiss_label:"Zug · From within",swiss_title:"Close to the institutions shaping digital finance.",swiss_copy:"Switzerland combines regulated banking, digital-asset infrastructure, asset management and one of the world's most established blockchain ecosystems. Our role is to make this market more accessible to the right Korean institutions.",banking:"Banking",custody:"Custody",tokenisation:"Tokenisation",
 bridge_label:"Switzerland ↔ Korea",bridge_title:"Not a network.<br><em>A working bridge.</em>",bridge_copy_ch:"For Swiss digital-asset firms, we support Korea market positioning, institutional business development, partner identification and strategic introductions.",bridge_copy_kr:"For Korean financial institutions, we curate relevant access to Swiss banks, digital-asset firms, asset managers, infrastructure providers and ecosystem expertise.",
 korea_label:"Korea · The other side",korea_title:"Understanding capital, technology and timing.",korea_copy:"Korea is a sophisticated financial and technology market with its own regulatory, institutional and cultural dynamics. Effective market entry requires more than translation. It requires context, positioning and the right conversations.",
-expertise_label:"Expertise",expertise_title:"Focused where institutional finance meets digital assets.",service1_title:"Institutional Digital Assets",service1_copy:"Custody, banking, ETP/ETF structures, tokenised assets, stablecoins and institutional infrastructure.",service2_title:"Market Entry",service2_copy:"Market mapping, positioning, local context and institutional go-to-market support between Switzerland and Korea.",service3_title:"Strategic Partnerships",service3_copy:"Business development across banks, asset managers, digital-asset firms and strategic technology partners.",service4_title:"Executive Access",service4_copy:"Curated meetings, executive visits and high-value engagement with Switzerland's financial and digital-asset ecosystem.",
+expertise_label:"Expertise",expertise_title:"Focused where institutional finance meets digital assets.",service1_title:"Institutional Digital Assets",service1_copy:"Custody, banking, ETF/ETP structures, tokenised assets, stablecoins, execution and institutional infrastructure.",service2_title:"Market Entry",service2_copy:"Market mapping, positioning, local context and institutional go-to-market support between Switzerland and Korea.",service3_title:"Strategic Partnerships",service3_copy:"Business development across banks, asset managers, wealth managers, brokers, digital-asset firms and strategic technology partners.",service4_title:"Executive Access",service4_copy:"Curated meetings, institutional IR, executive visits and high-value engagement with Switzerland's financial and digital-asset ecosystem.",
+market_access_label:"Institutional Market Access",market_access_title:"From product strategy to institutional access and execution.",access1_eyebrow:"Asian Financial Institutions",access1_title:"Products & Strategy",access1_copy:"ETF/ETP strategies, tokenised products, RWA initiatives and cross-border expansion plans.",access2_title:"Swiss Institutional Desk",access2_copy:"Market intelligence, positioning, investor mapping, strategic introductions and Swiss institutional IR support.",access3_eyebrow:"European & Swiss Ecosystem",access3_title:"Distribution & Execution",access3_copy:"Connections to wealth managers, asset managers, banks, brokers and infrastructure providers across traditional and digital markets.",access_note1:"We support financial institutions entering Switzerland and Europe with a selective institutional approach — from market mapping and meetings to execution-ecosystem partnerships.",access_note2:"For Swiss and European firms, we provide a route into Korea through local positioning, relevant decision-makers and cross-border business development.",
 statement_title:"Less visibility for its own sake.<br>More access that leads somewhere.",statement_copy:"We believe cross-border advisory is most valuable when it is selective, informed and built around meaningful institutional outcomes.",
 advisory_label:"Advisory Network",advisory_title:"The right expertise for each engagement.",advisory_copy:"Swiss Digital Asset Hub works with an independent network of professionals across digital assets, financial services, technology, regulation and cross-border business. We bring together relevant expertise according to the needs of each engagement — combining institutional perspective with local market knowledge across Switzerland and Korea.",independent_expertise:"Independent<br>expertise",connected_markets:"Connected<br>markets",tag1:"Digital Assets & Markets",tag2:"Banking & Asset Management",tag3:"Regulation & Compliance",tag4:"Blockchain & Infrastructure",tag5:"Institutional Strategy",tag6:"Cross-Border Business",
 leadership_label:"Leadership",leadership_role:"Founder · Swiss Digital Asset Hub",leadership_copy:"Rosa leads Swiss Digital Asset Hub's Switzerland–Korea activities, focusing on institutional relationships, market development and strategic partnerships across the digital-asset ecosystem.",linkedin:"View LinkedIn profile ↗",fact1:"Switzerland ↔ Korea",fact2:"Institutional Relationships",fact3:"Market Development",fact4:"Strategic Partnerships",
-contact_label:"Start a conversation",contact_title:"Two markets.<br>One conversation to begin.",contact_services:"Institutional digital assets · Market entry · Strategic partnerships · Executive access",contact_region:"Switzerland / Korea"
+contact_label:"Start a conversation",contact_title:"Two markets.<br>One conversation to begin.",contact_services:"Institutional digital assets · Market access · ETF/ETP · Strategic partnerships · Executive access",contact_region:"Switzerland / Korea"
 },
 ko:{
-nav_about:"소개",nav_bridge:"스위스 ↔ 한국",nav_expertise:"전문 분야",nav_advisory:"어드바이저 네트워크",nav_contact:"문의",
+nav_about:"소개",nav_bridge:"스위스 ↔ 한국",nav_expertise:"전문 분야",nav_market_access:"기관 시장 진출",nav_advisory:"어드바이저 네트워크",nav_contact:"문의",
 hero_label:"기관 디지털자산 · 크로스보더 비즈니스",hero_title:"스위스의 신뢰.<br>한국의 역동성.",
 intro_label:"우리의 관점",intro_title:"디지털 금융은 빠르게 변화합니다. 신뢰는 오랜 시간에 걸쳐 만들어집니다.",
 intro_copy:"Swiss Digital Asset Hub는 스위스에 기반을 둔 독립 플랫폼으로, 스위스와 한국의 금융기관, 디지털자산 기업, 전문 네트워크와 비즈니스 기회를 연결합니다. 단순한 소개를 넘어, 시장에 대한 이해와 적합한 파트너 연결, 그리고 장기적인 관계 형성에 집중합니다.",
@@ -581,10 +631,11 @@ bridge_copy_kr:"한국 금융기관과 기업이 스위스의 은행, 자산운�
 korea_label:"한국 · 새로운 기회의 시장",korea_title:"시장, 규제, 문화까지 함께 이해합니다.",
 korea_copy:"한국은 자본시장과 기술 산업이 빠르게 발전하는 동시에 고유한 규제 환경과 비즈니스 문화를 가진 시장입니다. 성공적인 시장 진출을 위해서는 단순한 번역이나 소개를 넘어, 현지 상황에 맞는 포지셔닝과 적절한 파트너 선정이 필요합니다.",
 expertise_label:"전문 분야",expertise_title:"기관금융과 디지털자산이 만나는 영역에 집중합니다.",
-service1_title:"기관 디지털자산",service1_copy:"커스터디, 은행, ETP/ETF, 토큰화 자산, 스테이블코인 및 기관용 디지털자산 인프라.",
+service1_title:"기관 디지털자산",service1_copy:"커스터디, 은행, ETF/ETP, 토큰화 자산, 스테이블코인, 거래 실행 및 기관용 디지털자산 인프라.",
 service2_title:"시장 진출",service2_copy:"스위스와 한국 간 시장 분석, 포지셔닝, 파트너 발굴 및 기관 대상 비즈니스 개발 지원.",
-service3_title:"전략적 파트너십",service3_copy:"은행, 자산운용사, 디지털자산 기업 및 기술기업 간의 전략적 협력과 비즈니스 기회 발굴.",
-service4_title:"기관 네트워크 프로그램",service4_copy:"스위스 금융 및 디지털자산 생태계의 핵심 기관과 전문가를 연결하는 맞춤형 미팅, 경영진 방문 및 현장 프로그램.",
+service3_title:"전략적 파트너십",service3_copy:"은행, 자산운용사, 웰스매니저, 브로커, 디지털자산 기업 및 기술기업 간의 전략적 협력과 비즈니스 기회 발굴.",
+service4_title:"기관 네트워크 프로그램",service4_copy:"스위스 금융 및 디지털자산 생태계의 핵심 기관과 전문가를 연결하는 맞춤형 미팅, 기관 IR, 경영진 방문 및 현장 프로그램.",
+market_access_label:"기관 시장 진출",market_access_title:"상품 전략에서 기관 투자자 접근과 실행 인프라까지 연결합니다.",access1_eyebrow:"한국·아시아 금융기관",access1_title:"상품 & 전략",access1_copy:"ETF/ETP 전략, 토큰화 상품, RWA 프로젝트 및 글로벌 시장 확장 계획.",access2_title:"스위스 기관 데스크",access2_copy:"시장 정보, 포지셔닝, 투자자 맵핑, 전략적 소개 및 스위스 기관 IR을 지원합니다.",access3_eyebrow:"스위스·유럽 금융 생태계",access3_title:"유통 & 실행",access3_copy:"웰스매니저, 자산운용사, 은행, 브로커 및 전통·디지털 금융 인프라 제공업체와의 연결을 지원합니다.",access_note1:"스위스와 유럽에 진출하는 금융기관을 위해 시장 분석과 기관 미팅부터 실행 파트너십까지 선별된 방식으로 지원합니다.",access_note2:"스위스 및 유럽 금융기업에게는 한국 시장 포지셔닝, 주요 의사결정자 연결 및 크로스보더 비즈니스 개발을 지원합니다.",
 statement_title:"단순히 많이 연결하는 것보다.<br>필요한 연결을 정확하게.",
 statement_copy:"Swiss Digital Asset Hub는 크로스보더 비즈니스의 가치를 네트워크의 규모가 아니라, 시장 이해와 전문성, 그리고 실제 사업으로 이어질 수 있는 연결에서 찾습니다.",
 advisory_label:"어드바이저 네트워크",advisory_title:"각 프로젝트에 필요한 전문성을 함께 구성합니다.",
@@ -595,7 +646,7 @@ leadership_label:"리더십",leadership_role:"Founder · Swiss Digital Asset Hub
 leadership_copy:"Rosa는 Swiss Digital Asset Hub의 스위스–한국 비즈니스를 이끌며, 금융기관 및 디지털자산 기업과의 관계 구축, 시장 진출, 기관 비즈니스 개발 및 전략적 파트너십에 집중하고 있습니다.",
 linkedin:"LinkedIn 프로필 보기 ↗",fact1:"스위스 ↔ 한국",fact2:"기관 네트워크",fact3:"시장 진출",fact4:"전략적 파트너십",
 contact_label:"문의",contact_title:"스위스와 한국의<br>새로운 기회를 연결합니다.",
-contact_services:"기관 디지털자산 · 시장 진출 · 전략적 파트너십 · 기관 네트워크 프로그램",contact_region:"스위스 / 한국"
+contact_services:"기관 디지털자산 · 기관 시장 진출 · ETF/ETP · 전략적 파트너십 · 기관 네트워크 프로그램",contact_region:"스위스 / 한국"
 }
 };
 function setLanguage(lang){
