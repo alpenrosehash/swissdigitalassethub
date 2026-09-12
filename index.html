@@ -15,6 +15,9 @@
       --line:#d8d3c9;
       --deep:#13201d;
       --red:#b0282f;
+      --blue:#244b63;
+      --mist:#dfe8ea;
+      --rose:#ead9d8;
       --max:1320px;
     }
     *{box-sizing:border-box}
@@ -52,6 +55,7 @@
     nav{display:flex;gap:28px;font-size:16px}
     nav a{opacity:.84}
     nav a:hover{opacity:1}
+    .menu-btn{display:none;appearance:none;border:1px solid rgba(255,255,255,.55);background:transparent;color:white;padding:8px 10px;font-size:18px;cursor:pointer}
 
     .hero{
       min-height:100vh;
@@ -217,6 +221,33 @@
       font-size:25px;font-weight:400
     }
     .service p{margin:0;font-size:20px;line-height:1.7;color:#666b66}
+
+    .intelligence{padding:140px 0;background:var(--mist)}
+    .intelligence-head{display:grid;grid-template-columns:.55fr 1.45fr;gap:100px;align-items:end;margin-bottom:62px}
+    .intelligence h2,.pathway h2,.monitor h2{margin:0;font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:clamp(36px,4.2vw,60px);line-height:1;letter-spacing:-.045em}
+    .intelligence-intro{max-width:690px;margin:24px 0 0;color:#596568;font-size:20px;line-height:1.7}
+    .brief-grid{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #87969a}
+    .brief{position:relative;min-height:270px;padding:34px 42px 56px 0;border-bottom:1px solid #aab6b8}
+    .brief:nth-child(odd){border-right:1px solid #aab6b8}
+    .brief:nth-child(even){padding-left:42px}
+    .brief .brief-meta{font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--red)}
+    .brief h3{max-width:520px;margin:30px 0 14px;font-family:Georgia,"Times New Roman",serif;font-size:31px;line-height:1.05;font-weight:400;letter-spacing:-.025em}
+    .brief p{max-width:540px;margin:0;color:#5c676a;font-size:18px;line-height:1.65}
+    .brief .brief-link{position:absolute;bottom:24px;left:0;font-size:14px;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid #7d898c}
+    .brief:nth-child(even) .brief-link{left:42px}
+
+    .pathway{padding:140px 0;background:var(--deep);color:white}
+    .pathway .label{color:#aeb7b3}.pathway-top{display:grid;grid-template-columns:.55fr 1.45fr;gap:100px;margin-bottom:65px}.pathway h2{color:white}
+    .pathway-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #56645f}
+    .path-step{min-height:330px;padding:30px 25px 30px 0;border-right:1px solid #56645f}
+    .path-step:not(:first-child){padding-left:25px}.path-step:last-child{border-right:0}
+    .path-step .num{color:#d08b8f}.path-step h3{margin:50px 0 20px;font-family:Georgia,"Times New Roman",serif;font-size:28px;font-weight:400}.path-step p{margin:0;color:#b8c1bd;font-size:17px;line-height:1.7}
+
+    .monitor{padding:140px 0;background:var(--rose)}
+    .monitor-top{display:grid;grid-template-columns:.55fr 1.45fr;gap:100px;margin-bottom:60px}
+    .monitor-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px}
+    .market-panel{border-top:1px solid #8f7f7d}.market-title{display:flex;justify-content:space-between;align-items:center;padding:22px 0;border-bottom:1px solid #baaaa8;font-family:Georgia,"Times New Roman",serif;font-size:30px}.market-title span{font-family:Arial,Helvetica,sans-serif;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:#776c6b}
+    .market-row{display:grid;grid-template-columns:1.2fr 1fr;gap:20px;padding:17px 0;border-bottom:1px solid #c8b9b7;font-size:17px}.market-row span:last-child{color:#746a69}
 
 
     .market-access{padding:140px 0;background:#fff;border-top:1px solid var(--line)}
@@ -384,6 +415,12 @@
     body.lang-ko .seoul-copy h3,
     body.lang-ko .expertise h2,
     body.lang-ko .service h3,
+    body.lang-ko .intelligence h2,
+    body.lang-ko .brief h3,
+    body.lang-ko .pathway h2,
+    body.lang-ko .path-step h3,
+    body.lang-ko .monitor h2,
+    body.lang-ko .market-title,
     body.lang-ko .statement h2,
     body.lang-ko .identity-copy h2,
     body.lang-ko .identity-country,
@@ -394,7 +431,7 @@
     }
 
     @media(max-width:900px){
-      nav{display:none}
+      .menu-btn{display:block}.nav nav{display:none;position:absolute;top:78px;left:28px;right:28px;background:rgba(19,32,29,.97);padding:24px;flex-direction:column;gap:18px}.nav nav.open{display:flex}
       .intro-grid,.expertise-top,.identity-grid,.founder-note-grid{grid-template-columns:1fr;gap:38px}
       .editorial,.seoul{grid-template-columns:1fr}
       .photo,.photo.zug,.photo.seoul-img{min-height:520px}
@@ -406,6 +443,7 @@
       .service{grid-template-columns:50px 1fr}
       .service p{grid-column:2}
       .identity-tags{grid-template-columns:1fr}
+      .intelligence-head,.pathway-top,.monitor-top{grid-template-columns:1fr;gap:35px}.pathway-grid{grid-template-columns:1fr 1fr}.path-step:nth-child(2){border-right:0}.monitor-grid{grid-template-columns:1fr;gap:48px}
     }
     @media(max-width:620px){
       .wrap{width:min(calc(100% - 30px),var(--max))}
@@ -418,6 +456,7 @@
       .route,.identity-line{grid-template-columns:1fr;gap:12px}
       .route .city:last-child,.identity-country:last-child{text-align:left}
       .route .arrow,.identity-arrow{text-align:left;transform:rotate(90deg);width:max-content}
+      .brief-grid,.pathway-grid{grid-template-columns:1fr}.brief,.brief:nth-child(even){padding:30px 0 58px;border-right:0}.brief:nth-child(even) .brief-link{left:0}.path-step,.path-step:not(:first-child){padding:28px 0;border-right:0;border-bottom:1px solid #56645f;min-height:auto}.path-step h3{margin-top:30px}.market-row{grid-template-columns:1fr;gap:5px}
     }
   </style>
 </head>
@@ -426,12 +465,13 @@
 <header>
   <div class="wrap nav">
     <a class="brand" href="#top"><span class="logo">SDAH</span><span>SWISS DIGITAL ASSET HUB</span></a>
+    <button class="menu-btn" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
     <nav>
-      <a href="#about" data-i18n="nav_about">About</a>
+      <a href="#intelligence" data-i18n="nav_intelligence">Intelligence</a>
       <a href="#bridge" data-i18n="nav_bridge">Switzerland ↔ Korea</a>
-      <a href="#expertise" data-i18n="nav_expertise">Expertise</a>
-       <a href="#market-access" data-i18n="nav_market_access">Market Access</a>
-      <a href="#advisory" data-i18n="nav_advisory">Advisory Network</a>
+      <a href="#market-access" data-i18n="nav_market_access">Market Access</a>
+      <a href="#pathway" data-i18n="nav_advisory">Advisory</a>
+      <a href="#about" data-i18n="nav_about">About</a>
       <a href="#contact" data-i18n="nav_contact">Contact</a>
       <div class="lang-switch" aria-label="Language">
         <button class="lang-btn active" type="button" data-lang="en">EN</button>
@@ -494,6 +534,21 @@
     <div class="photo seoul-img" aria-label="Seoul financial district"></div>
   </section>
 
+  <section class="intelligence" id="intelligence">
+    <div class="wrap">
+      <div class="intelligence-head">
+        <div class="label" data-i18n="intelligence_label">Latest intelligence</div>
+        <div><h2 data-i18n-html="intelligence_title">What institutions need<br>to understand next.</h2><p class="intelligence-intro" data-i18n="intelligence_intro">Focused analysis on the market shifts shaping institutional digital assets and cross-border capital between Switzerland and Korea.</p></div>
+      </div>
+      <div class="brief-grid">
+        <article class="brief"><div class="brief-meta" data-i18n="brief1_meta">Korea · Tokenisation</div><h3 data-i18n="brief1_title">Korea's Token Securities Market</h3><p data-i18n="brief1_copy">What the emerging framework means for international financial institutions and infrastructure providers.</p><a class="brief-link" href="#contact" data-i18n="read_brief">Discuss the brief ↗</a></article>
+        <article class="brief"><div class="brief-meta" data-i18n="brief2_meta">Asset Management</div><h3 data-i18n="brief2_title">Korean ETFs Go Global</h3><p data-i18n="brief2_copy">Routes through London, Frankfurt, Switzerland and the Middle East.</p><a class="brief-link" href="#contact" data-i18n="read_analysis">Discuss the analysis ↗</a></article>
+        <article class="brief"><div class="brief-meta" data-i18n="brief3_meta">Market Infrastructure</div><h3 data-i18n="brief3_title">Where Switzerland and Korea Complement Each Other</h3><p data-i18n="brief3_copy">Mapping product, banking, custody, distribution and technology capabilities.</p><a class="brief-link" href="#contact" data-i18n="explore_theme">Explore the theme ↗</a></article>
+        <article class="brief"><div class="brief-meta" data-i18n="brief4_meta">Digital Money</div><h3 data-i18n="brief4_title">From CBDC to Stablecoins</h3><p data-i18n="brief4_copy">Korea's evolving institutional money infrastructure and its cross-border relevance.</p><a class="brief-link" href="#contact" data-i18n="read_brief">Discuss the brief ↗</a></article>
+      </div>
+    </div>
+  </section>
+
   <section class="expertise" id="expertise">
     <div class="wrap">
       <div class="expertise-top">
@@ -537,6 +592,28 @@
       <div class="access-note">
         <p data-i18n="access_note1">We support financial institutions entering Switzerland and Europe from opportunity definition and product positioning through institutional engagement and the right implementation partnerships.</p>
         <p data-i18n="access_note2">For Swiss and European firms, we translate Korean market developments into actionable institutional opportunities and develop business with relevant decision-makers and partners.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="pathway" id="pathway">
+    <div class="wrap">
+      <div class="pathway-top"><div class="label" data-i18n="pathway_label">From insight to execution</div><h2 data-i18n-html="pathway_title">One connected<br>commercial path.</h2></div>
+      <div class="pathway-grid">
+        <article class="path-step"><div class="num">01</div><h3 data-i18n="path1_title">Intelligence</h3><p data-i18n="path1_copy">Market intelligence, institutional mapping, regulatory developments and competitive landscape.</p></article>
+        <article class="path-step"><div class="num">02</div><h3 data-i18n="path2_title">Market Access</h3><p data-i18n="path2_copy">Partner identification, executive engagement, institutional meetings and focused market visits.</p></article>
+        <article class="path-step"><div class="num">03</div><h3 data-i18n="path3_title">Advisory</h3><p data-i18n="path3_copy">Market-entry strategy, product positioning, partnership development and commercialisation.</p></article>
+        <article class="path-step"><div class="num">04</div><h3 data-i18n="path4_title">Mandates</h3><p data-i18n="path4_copy">Korea or Swiss representation, institutional business development and strategic projects.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="monitor">
+    <div class="wrap">
+      <div class="monitor-top"><div class="label" data-i18n="monitor_label">Institutional monitor</div><h2 data-i18n-html="monitor_title">Two markets.<br>One field of view.</h2></div>
+      <div class="monitor-grid">
+        <div class="market-panel"><div class="market-title">Korea <span data-i18n="formation">Market formation</span></div><div class="market-row"><strong data-i18n="m1a">Token securities</strong><span data-i18n="m1b">Policy development</span></div><div class="market-row"><strong data-i18n="m2a">Stablecoins</strong><span data-i18n="m2b">Regulatory formation</span></div><div class="market-row"><strong data-i18n="m3a">CBDC / digital money</strong><span data-i18n="m3b">Institutional pilots</span></div><div class="market-row"><strong data-i18n="m4a">ETF internationalisation</strong><span data-i18n="m4b">International expansion</span></div></div>
+        <div class="market-panel"><div class="market-title">Switzerland <span data-i18n="infrastructure">Market infrastructure</span></div><div class="market-row"><strong data-i18n="m5a">Tokenisation</strong><span data-i18n="m5b">Active ecosystem</span></div><div class="market-row"><strong data-i18n="m6a">Digital asset banking</strong><span data-i18n="m6b">Regulated & mature</span></div><div class="market-row"><strong data-i18n="m7a">ETP infrastructure</strong><span data-i18n="m7b">Established market</span></div><div class="market-row"><strong data-i18n="m8a">Institutional custody</strong><span data-i18n="m8b">Bank-grade providers</span></div></div>
       </div>
     </div>
   </section>
@@ -604,21 +681,23 @@
 <script>
 const translations={
 en:{
-nav_about:"About",nav_bridge:"Switzerland ↔ Korea",nav_expertise:"Expertise",nav_market_access:"Market Access",nav_advisory:"Advisory Network",nav_contact:"Contact",
+nav_intelligence:"Intelligence",nav_about:"About",nav_bridge:"Switzerland ↔ Korea",nav_expertise:"Expertise",nav_market_access:"Market Access",nav_advisory:"Advisory",nav_contact:"Contact",
 hero_label:"Institutional Digital Assets · Cross-Border Advisory",hero_title:"Swiss trust.<br>Korean momentum.",
 intro_label:"Our point of view",intro_title:"Digital finance moves fast. Trust is built more carefully.",intro_copy:"Swiss Digital Asset Hub is an independent Switzerland-based platform developing institutional digital-asset and investment-product business between Switzerland and Korea. We focus on market intelligence, institutional origination and the partnerships required to move cross-border opportunities toward implementation.",
 swiss_label:"Zug · From within",swiss_title:"Where financial innovation becomes institutional business.",swiss_copy:"Switzerland combines regulated banking, asset management and one of the world's most established digital-asset ecosystems. We work from within this market to identify institutional opportunities and develop relevant business between Swiss and Korean financial institutions.",banking:"Banking",custody:"Custody",tokenisation:"Tokenisation",
 bridge_label:"Switzerland ↔ Korea",bridge_title:"From market insight.<br><em>To institutional business.</em>",bridge_copy_ch:"For Swiss digital-asset firms, we identify Korean institutional demand, shape market positioning and originate business opportunities with relevant financial institutions and strategic partners.",bridge_copy_kr:"For Korean financial institutions, we develop routes into Switzerland and Europe across investment products, digital assets and financial infrastructure — from opportunity definition to the right implementation partners.",
 korea_label:"Korea · The other side",korea_title:"Understanding where Korea’s institutional market is moving next.",korea_copy:"Korea is entering a new phase of institutional digital finance across tokenisation, stablecoins, investment products and market infrastructure. Effective cross-border business requires understanding not only regulation and market structure, but what financial institutions actually need and when they are ready to act.",
+intelligence_label:"Latest intelligence",intelligence_title:"What institutions need<br>to understand next.",intelligence_intro:"Focused analysis on the market shifts shaping institutional digital assets and cross-border capital between Switzerland and Korea.",brief1_meta:"Korea · Tokenisation",brief1_title:"Korea's Token Securities Market",brief1_copy:"What the emerging framework means for international financial institutions and infrastructure providers.",brief2_meta:"Asset Management",brief2_title:"Korean ETFs Go Global",brief2_copy:"Routes through London, Frankfurt, Switzerland and the Middle East.",brief3_meta:"Market Infrastructure",brief3_title:"Where Switzerland and Korea Complement Each Other",brief3_copy:"Mapping product, banking, custody, distribution and technology capabilities.",brief4_meta:"Digital Money",brief4_title:"From CBDC to Stablecoins",brief4_copy:"Korea's evolving institutional money infrastructure and its cross-border relevance.",read_brief:"Discuss the brief ↗",read_analysis:"Discuss the analysis ↗",explore_theme:"Explore the theme ↗",
 expertise_label:"Expertise",expertise_title:"Focused where institutional finance meets digital assets.",service1_title:"Institutional Digital Assets",service1_copy:"Custody, banking, ETF/ETP structures, tokenised assets, stablecoins, execution and institutional infrastructure.",service2_title:"Market Entry",service2_copy:"Institutional market intelligence, positioning and go-to-market development for firms expanding between Switzerland, Europe and Korea.",service3_title:"Investment Products & Tokenisation",service3_copy:"Origination and development of institutional opportunities across banks, asset managers, wealth managers, brokers, digital-asset firms and financial-infrastructure partners.",service4_title:"Executive Access",service4_copy:"Targeted institutional IR, executive engagement and market access designed around specific business objectives rather than introductions alone.",
 market_access_label:"Institutional Market Access",market_access_title:"From product strategy to institutional access and implementation.",access1_eyebrow:"Asian Financial Institutions",access1_title:"Products & Strategy",access1_copy:"ETF/ETP strategies, tokenised products, RWA initiatives and cross-border expansion plans.",access2_title:"Swiss Institutional Desk",access2_copy:"Market intelligence, institutional origination, investor mapping, product positioning and Swiss institutional business development.",access3_eyebrow:"European & Swiss Ecosystem",access3_title:"Distribution & Execution",access3_copy:"Relevant pathways through wealth managers, asset managers, banks, brokers and infrastructure providers in traditional and digital markets.",access_note1:"We support financial institutions entering Switzerland and Europe from opportunity definition and product positioning through institutional engagement and the right implementation partnerships.",access_note2:"For Swiss and European firms, we translate Korean market developments into actionable institutional opportunities and develop business with relevant decision-makers and partners.",
 statement_title:"From market intelligence.<br>To institutional opportunity.",statement_copy:"We believe cross-border work should lead beyond introductions — toward well-defined opportunities, institutional engagement and measurable business outcomes.",
+pathway_label:"From insight to execution",pathway_title:"One connected<br>commercial path.",path1_title:"Intelligence",path1_copy:"Market intelligence, institutional mapping, regulatory developments and competitive landscape.",path2_title:"Market Access",path2_copy:"Partner identification, executive engagement, institutional meetings and focused market visits.",path3_title:"Advisory",path3_copy:"Market-entry strategy, product positioning, partnership development and commercialisation.",path4_title:"Mandates",path4_copy:"Korea or Swiss representation, institutional business development and strategic projects.",monitor_label:"Institutional monitor",monitor_title:"Two markets.<br>One field of view.",formation:"Market formation",infrastructure:"Market infrastructure",m1a:"Token securities",m1b:"Policy development",m2a:"Stablecoins",m2b:"Regulatory formation",m3a:"CBDC / digital money",m3b:"Institutional pilots",m4a:"ETF internationalisation",m4b:"International expansion",m5a:"Tokenisation",m5b:"Active ecosystem",m6a:"Digital asset banking",m6b:"Regulated & mature",m7a:"ETP infrastructure",m7b:"Established market",m8a:"Institutional custody",m8b:"Bank-grade providers",
 advisory_label:"Advisory Network",advisory_title:"The right expertise for each engagement.",advisory_copy:"Swiss Digital Asset Hub works with an independent network of professionals across digital assets, financial services, technology, regulation and cross-border business. We bring together relevant expertise according to the needs of each engagement — combining institutional perspective with local market knowledge across Switzerland and Korea.",independent_expertise:"Independent<br>expertise",connected_markets:"Connected<br>markets",tag1:"Digital Assets & Markets",tag2:"Banking & Asset Management",tag3:"Regulation & Compliance",tag4:"Blockchain & Infrastructure",tag5:"Institutional Strategy",tag6:"Cross-Border Business",
 leadership_label:"Leadership",leadership_role:"Founder · Korea–Switzerland Institutional Business & Digital Assets",leadership_copy:"Rosa works at the intersection of Switzerland's financial innovation ecosystem and Korea's institutional transformation. Active in Switzerland's Crypto Valley ecosystem since 2018, she focuses on originating and developing institutional business across digital assets, investment products and cross-border financial infrastructure between Switzerland and Korea.",linkedin:"View LinkedIn profile ↗",fact1:"Switzerland ↔ Korea",fact2:"Institutional Origination",fact3:"Business Development",fact4:"Investment Products & Tokenisation",
 contact_label:"Start a conversation",contact_title:"Two markets.<br>One conversation to begin.",contact_services:"Institutional digital assets · Investment products · Tokenisation · Market entry · Institutional origination",contact_region:"Switzerland / Korea"
 },
 ko:{
-nav_about:"소개",nav_bridge:"스위스 ↔ 한국",nav_expertise:"전문 분야",nav_market_access:"기관 비즈니스 개발",nav_advisory:"어드바이저 네트워크",nav_contact:"문의",
+nav_intelligence:"인텔리전스",nav_about:"소개",nav_bridge:"스위스 ↔ 한국",nav_expertise:"전문 분야",nav_market_access:"기관 비즈니스 개발",nav_advisory:"어드바이저리",nav_contact:"문의",
 hero_label:"기관 디지털자산 · 크로스보더 비즈니스",hero_title:"스위스의 신뢰.<br>한국의 역동성.",
 intro_label:"우리의 관점",intro_title:"디지털 금융은 빠르게 변화합니다. 신뢰는 오랜 시간에 걸쳐 만들어집니다.",
 intro_copy:"Swiss Digital Asset Hub는 스위스에 기반을 둔 독립 플랫폼으로, 스위스와 한국 간 기관 디지털자산 및 투자상품 비즈니스를 개발합니다. 시장 인텔리전스와 기관 비즈니스 발굴을 바탕으로 크로스보더 기회를 실제 사업화 단계로 발전시키는 데 집중합니다.",
@@ -630,6 +709,7 @@ bridge_copy_ch:"스위스의 디지털자산 기업과 금융기관을 위해 �
 bridge_copy_kr:"한국 금융기관을 위해 투자상품, 디지털자산 및 금융 인프라 분야의 스위스·유럽 진출 기회를 구체화하고, 실제 구현에 필요한 적합한 파트너와 연결해 사업으로 발전시킵니다.",
 korea_label:"한국 · 새로운 기회의 시장",korea_title:"한국 기관시장의 다음 변화를 읽습니다.",
 korea_copy:"한국은 토큰화, 스테이블코인, 투자상품과 시장 인프라를 중심으로 기관 디지털금융의 새로운 단계에 진입하고 있습니다. 효과적인 크로스보더 비즈니스를 위해서는 규제와 시장 구조뿐 아니라 금융기관이 실제로 무엇을 필요로 하고 언제 실행할 준비가 되는지를 이해해야 합니다.",
+intelligence_label:"최신 인텔리전스",intelligence_title:"기관이 다음으로<br>이해해야 할 변화.",intelligence_intro:"스위스와 한국의 기관 디지털자산 및 크로스보더 자본시장을 형성하는 핵심 변화를 분석합니다.",brief1_meta:"한국 · 토큰화",brief1_title:"한국의 토큰증권 시장",brief1_copy:"새로운 제도가 글로벌 금융기관과 인프라 사업자에게 갖는 의미를 분석합니다.",brief2_meta:"자산운용",brief2_title:"한국 ETF의 글로벌 확장",brief2_copy:"런던, 프랑크푸르트, 스위스와 중동으로 이어지는 진출 경로를 살펴봅니다.",brief3_meta:"시장 인프라",brief3_title:"스위스와 한국이 서로 보완하는 영역",brief3_copy:"상품, 은행, 커스터디, 유통과 기술 역량을 연결해 봅니다.",brief4_meta:"디지털 머니",brief4_title:"CBDC에서 스테이블코인까지",brief4_copy:"한국의 기관 디지털 머니 인프라 변화와 크로스보더 의미를 분석합니다.",read_brief:"브리프 논의하기 ↗",read_analysis:"분석 논의하기 ↗",explore_theme:"주제 살펴보기 ↗",
 expertise_label:"전문 분야",expertise_title:"기관금융과 디지털자산이 만나는 영역에 집중합니다.",
 service1_title:"기관 디지털자산",service1_copy:"커스터디, 은행, ETF/ETP, 토큰화 자산, 스테이블코인, 거래 실행 및 기관용 디지털자산 인프라.",
 service2_title:"비즈니스 개발",service2_copy:"스위스·유럽과 한국 간 기관 시장 인텔리전스, 포지셔닝 및 go-to-market 비즈니스 개발.",
@@ -638,6 +718,7 @@ service4_title:"기관 비즈니스 발굴 프로그램",service4_copy:"단순 �
 market_access_label:"기관 비즈니스 개발",market_access_title:"상품 전략에서 기관 투자자 접근과 실제 구현 단계까지 연결합니다.",access1_eyebrow:"한국·아시아 금융기관",access1_title:"상품 & 전략",access1_copy:"ETF/ETP 전략, 토큰화 상품, RWA 프로젝트 및 글로벌 시장 확장 계획.",access2_title:"스위스 기관 데스크",access2_copy:"시장 인텔리전스, 기관 비즈니스 발굴, 투자자 맵핑, 상품 포지셔닝 및 스위스 기관 비즈니스 개발을 지원합니다.",access3_eyebrow:"스위스·유럽 금융 생태계",access3_title:"유통 & 구현",access3_copy:"웰스매니저, 자산운용사, 은행, 브로커 및 전통·디지털 금융 인프라를 활용한 적합한 사업 경로를 개발합니다.",access_note1:"스위스와 유럽에 진출하는 금융기관을 위해 기회 정의와 상품 포지셔닝부터 기관 비즈니스 개발 및 구현 파트너십까지 지원합니다.",access_note2:"스위스 및 유럽 금융기업에게는 한국 시장의 변화를 실행 가능한 기관 비즈니스 기회로 전환하고, 관련 의사결정자 및 파트너와 사업을 개발합니다.",
 statement_title:"시장 인텔리전스에서.<br>기관 비즈니스 기회로.",
 statement_copy:"Swiss Digital Asset Hub는 크로스보더 비즈니스가 단순한 소개를 넘어, 명확한 사업 기회와 기관 참여, 그리고 측정 가능한 결과로 이어져야 한다고 생각합니다.",
+pathway_label:"인사이트에서 실행까지",pathway_title:"하나로 연결된<br>비즈니스 경로.",path1_title:"인텔리전스",path1_copy:"시장 분석, 기관 맵핑, 규제 변화 및 경쟁 환경을 파악합니다.",path2_title:"시장 접근",path2_copy:"파트너 발굴, 경영진 연결, 기관 미팅과 목적 중심의 시장 방문을 설계합니다.",path3_title:"어드바이저리",path3_copy:"시장 진입, 상품 포지셔닝, 파트너십 개발과 사업화를 지원합니다.",path4_title:"장기 Mandate",path4_copy:"한국 또는 스위스 시장 대표, 기관 비즈니스 개발과 전략 프로젝트를 수행합니다.",monitor_label:"기관시장 모니터",monitor_title:"두 시장을<br>하나의 시야로.",formation:"시장 형성",infrastructure:"시장 인프라",m1a:"토큰증권",m1b:"정책·제도화",m2a:"스테이블코인",m2b:"규제 형성",m3a:"CBDC / 디지털 머니",m3b:"기관 파일럿",m4a:"ETF 국제화",m4b:"해외시장 확대",m5a:"토큰화",m5b:"활성화된 생태계",m6a:"디지털자산 은행",m6b:"규제 기반 성숙시장",m7a:"ETP 인프라",m7b:"확립된 시장",m8a:"기관 커스터디",m8b:"은행급 사업자",
 advisory_label:"어드바이저 네트워크",advisory_title:"각 프로젝트에 필요한 전문성을 함께 구성합니다.",
 advisory_copy:"Swiss Digital Asset Hub는 디지털자산, 금융서비스, 기술, 규제 및 크로스보더 비즈니스 분야의 독립 전문가들과 협업합니다. 프로젝트의 목적과 시장 상황에 따라 필요한 전문성을 연결하고, 스위스와 한국의 현지 시장 이해를 결합해 보다 실질적인 인사이트와 실행을 지원합니다.",
 independent_expertise:"전문가의<br>인사이트",connected_markets:"스위스와<br>한국",
@@ -658,6 +739,9 @@ function setLanguage(lang){
   localStorage.setItem("sdah-language",lang);
 }
 document.querySelectorAll(".lang-btn").forEach(btn=>btn.addEventListener("click",()=>setLanguage(btn.dataset.lang)));
+const menuBtn=document.querySelector(".menu-btn"),mobileNav=document.querySelector(".nav nav");
+menuBtn.addEventListener("click",()=>{const open=mobileNav.classList.toggle("open");menuBtn.setAttribute("aria-expanded",String(open));menuBtn.textContent=open?"×":"☰"});
+mobileNav.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>{mobileNav.classList.remove("open");menuBtn.setAttribute("aria-expanded","false");menuBtn.textContent="☰"}));
 document.getElementById("year").textContent=new Date().getFullYear();
 setLanguage(localStorage.getItem("sdah-language")||"en");
 </script>
