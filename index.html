@@ -4,8 +4,45 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Swiss Digital Asset Hub — Switzerland ↔ Korea</title>
-  <meta name="description" content="Institutional digital assets, market entry and strategic partnerships between Switzerland and Korea.">
+  <title>Swiss Digital Asset Hub — Switzerland ↔ Korea | Rosa Suk</title>
+  <meta name="description" content="Swiss Digital Asset Hub, founded by Rosa Suk (Ji Young Suk), develops institutional digital-asset, tokenisation and cross-border financial business between Switzerland and Korea.">
+  <meta name="author" content="Rosa Suk (Ji Young Suk)">
+  <meta name="keywords" content="Rosa Suk, Ji Young Suk, Swiss Korea digital assets, Switzerland Korea institutional finance, Korea market entry, tokenisation, digital asset banking, Swiss Digital Asset Hub">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Rosa Suk | Swiss–Korea Institutional Digital Assets">
+  <meta property="og:description" content="Connecting Switzerland's regulated financial ecosystem with Korea's institutional digital-asset market.">
+  <meta property="og:image" content="Rosa_grey.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Rosa Suk",
+    "alternateName": ["Ji Young Suk", "Ji Young (Rosa) Suk"],
+    "image": "Rosa_grey.png",
+    "jobTitle": "Founder · Swiss–Korea Institutional Digital Assets Specialist",
+    "url": "https://www.swissdigitalassethub.ch/",
+    "sameAs": ["https://www.linkedin.com/in/rosasuk/"],
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Swiss Digital Asset Hub",
+      "url": "https://www.swissdigitalassethub.ch/"
+    },
+    "knowsAbout": [
+      "Institutional digital assets",
+      "Swiss–Korean financial partnerships",
+      "Digital asset banking",
+      "Tokenisation",
+      "Investment products",
+      "Korea market entry",
+      "Cross-border financial infrastructure"
+    ],
+    "homeLocation": {
+      "@type": "Place",
+      "name": "Zurich and Zug, Switzerland"
+    }
+  }
+  </script>
   <style>
     :root{
       --ivory:#f4f0e8;
@@ -336,32 +373,50 @@
     }
 
     .founder-note{
-      padding:72px 0;
-      background:#f6f3ec
+      padding:120px 0;
+      background:#f6f3ec;
+      scroll-margin-top:30px
     }
     .founder-note-grid{
       display:grid;
-      grid-template-columns:.55fr 1.45fr;
-      gap:100px
+      grid-template-columns:340px 1fr;
+      gap:80px;
+      align-items:center
+    }
+    .founder-portrait{position:relative}
+    .founder-portrait::before{
+      content:"";position:absolute;left:-18px;top:24px;width:4px;height:72px;
+      background:var(--red);z-index:2
+    }
+    .founder-portrait img{
+      display:block;width:100%;max-width:300px;height:auto;
+      object-fit:contain;object-position:center;border-radius:2px;
+      filter:saturate(.92) contrast(1.02)
+    }
+    .founder-kicker{
+      margin-bottom:24px;color:var(--red);font-size:14px;
+      letter-spacing:.14em;text-transform:uppercase
     }
     .founder-note h3{
-      margin:0 0 12px;
+      margin:0 0 14px;
       font-family:Georgia,"Times New Roman",serif;
-      font-size:28px;
+      font-size:clamp(38px,4.5vw,62px);
       font-weight:400;
-      letter-spacing:-.02em
+      letter-spacing:-.045em;
+      line-height:.95
     }
     .founder-note .role{
-      font-size:16px;
-      color:#787d78;
-      margin-bottom:18px
+      font-size:18px;
+      color:#525a56;
+      margin-bottom:20px;
+      line-height:1.55
     }
     .founder-note .credential{
       margin-top:-10px
     }
     .founder-note p{
       margin:0;
-      max-width:720px;
+      max-width:760px;
       color:#626762;
       line-height:1.75;
       font-size:20px
@@ -370,12 +425,26 @@
       margin-top:28px;
       display:flex;
       flex-wrap:wrap;
-      gap:22px;
-      font-size:16px;
+      gap:12px;
+      font-size:13px;
       text-transform:uppercase;
       letter-spacing:.08em;
       color:#737873
     }
+    .founder-facts span{border:1px solid #c9c3b8;padding:10px 12px;background:rgba(255,255,255,.28)}
+    .affiliations{
+      margin-top:26px;padding-top:22px;border-top:1px solid #cec8bd;
+      max-width:760px
+    }
+    .affiliations-title{
+      margin-bottom:14px;font-size:13px;letter-spacing:.13em;
+      text-transform:uppercase;color:#737873
+    }
+    .affiliations-list{display:grid;grid-template-columns:1fr;gap:9px}
+    .affiliation-item{display:grid;grid-template-columns:170px 1fr;gap:18px;font-size:16px;line-height:1.5}
+    .affiliation-role{color:var(--red)}
+    .affiliation-org{color:#535a56}
+    .founder-search-line{margin-top:24px;font-size:15px;color:#7a807b;line-height:1.7}
 
     .contact{padding:120px 0 50px;background:#171d1b;color:#fff}
     .contact .label{color:#9fa7a3}
@@ -436,6 +505,7 @@
     @media(max-width:900px){
       .menu-btn{display:block}.nav nav{display:none;position:absolute;top:78px;left:28px;right:28px;background:rgba(19,32,29,.97);padding:24px;flex-direction:column;gap:18px}.nav nav.open{display:flex}
       .intro-grid,.expertise-top,.identity-grid,.founder-note-grid{grid-template-columns:1fr;gap:38px}
+      .founder-portrait img{max-width:280px}
       .editorial,.seoul{grid-template-columns:1fr}
       .photo,.photo.zug,.photo.seoul-img{min-height:520px}
       .editorial-copy,.seoul-copy{padding:72px 28px}
@@ -456,6 +526,8 @@
       .hero-meta{grid-template-columns:1fr;gap:10px}
       .hero-meta div:nth-child(2),.hero-meta div:last-child{text-align:left}
       .intro,.expertise,.bridge,.statement,.identity{padding:90px 0}
+      .founder-note{padding:84px 0}.founder-portrait::before{left:-8px}.founder-portrait img{max-width:240px}
+      .affiliation-item{grid-template-columns:1fr;gap:1px}
       .route,.identity-line{grid-template-columns:1fr;gap:12px}
       .route .city:last-child,.identity-country:last-child{text-align:left}
       .route .arrow,.identity-arrow{text-align:left;transform:rotate(90deg);width:max-content}
@@ -475,6 +547,7 @@
       <a href="#market-access" data-i18n="nav_market_access">Market Access</a>
       <a href="#pathway" data-i18n="nav_advisory">Advisory</a>
       <a href="#about" data-i18n="nav_about">About</a>
+      <a href="#rosa-suk" data-i18n="nav_founder">Founder</a>
       <a href="#contact" data-i18n="nav_contact">Contact</a>
       <div class="lang-switch" aria-label="Language">
         <button class="lang-btn active" type="button" data-lang="en">EN</button>
@@ -650,16 +723,28 @@
     </div>
   </section>
 
-  <section class="founder-note">
+  <section class="founder-note" id="rosa-suk" aria-labelledby="rosa-suk-name">
     <div class="wrap founder-note-grid">
-      <div class="label" data-i18n="leadership_label">Leadership</div>
+      <div class="founder-portrait">
+        <img src="Rosa_grey.png" width="1077" height="1461" loading="lazy" alt="Rosa Suk, founder of Swiss Digital Asset Hub and Swiss–Korea institutional digital-assets specialist">
+      </div>
       <div>
-        <h3>Ji Young (Rosa) Suk</h3>
-        <div class="role" data-i18n="leadership_role">Founder · Korea–Switzerland Institutional Business & Digital Assets</div>
+        <div class="founder-kicker" data-i18n="leadership_label">Founder &amp; Switzerland–Korea specialist</div>
+        <h3 id="rosa-suk-name">Rosa Suk</h3>
+        <div class="role">Ji Young Suk · <span data-i18n="leadership_role">Founder · Swiss–Korea Institutional Digital Assets &amp; Market Development</span></div>
         <div class="role credential" data-i18n="leadership_credential">Certified Crypto Finance Expert (CCFE) · SAQ (Swiss Association for Quality) · ISO/IEC 17024</div>
-        <p data-i18n="leadership_copy">Rosa works at the intersection of Switzerland's financial innovation ecosystem and Korea's institutional transformation. Active in Switzerland's Crypto Valley ecosystem since 2018, she focuses on originating and developing institutional business across digital assets, investment products and cross-border financial infrastructure between Switzerland and Korea.</p>
+        <p data-i18n="leadership_copy">Rosa Suk is a Switzerland-based specialist connecting Korea's institutional financial market with Switzerland's regulated digital-asset ecosystem. Active in Crypto Valley since 2018, she originates and develops cross-border business across digital-asset banking, custody, tokenisation, investment products, stablecoins and financial infrastructure.</p>
+        <div class="affiliations" aria-label="Community leadership and memberships">
+          <div class="affiliations-title" data-i18n="affiliations_title">Community Leadership &amp; Memberships</div>
+          <div class="affiliations-list">
+            <div class="affiliation-item"><span class="affiliation-role" data-i18n="affiliation1_role">Korea Chapter Lead</span><span class="affiliation-org">Women in Web3 Switzerland · Core Contributor</span></div>
+            <div class="affiliation-item"><span class="affiliation-role" data-i18n="affiliation_member">Member</span><span class="affiliation-org">Bitcoin Association Switzerland</span></div>
+            <div class="affiliation-item"><span class="affiliation-role" data-i18n="affiliation_member">Member</span><span class="affiliation-org">Crypto Valley Association</span></div>
+          </div>
+        </div>
         <a class="linkedin-link" href="https://www.linkedin.com/in/rosasuk/" target="_blank" rel="noopener noreferrer" data-i18n="linkedin">View LinkedIn profile ↗</a>
         <div class="founder-facts"><span data-i18n="fact1">Switzerland ↔ Korea</span><span data-i18n="fact2">Institutional Origination</span><span data-i18n="fact3">Business Development</span><span data-i18n="fact4">Investment Products & Tokenisation</span></div>
+        <div class="founder-search-line" data-i18n="leadership_search">Swiss–Korea institutional digital assets · Korea market entry · Cross-border financial partnerships</div>
       </div>
     </div>
   </section>
@@ -685,7 +770,7 @@
 <script>
 const translations={
 en:{
-nav_intelligence:"Intelligence",nav_about:"About",nav_bridge:"Switzerland ↔ Korea",nav_expertise:"Expertise",nav_market_access:"Market Access",nav_advisory:"Advisory",nav_contact:"Contact",
+nav_intelligence:"Intelligence",nav_about:"About",nav_bridge:"Switzerland ↔ Korea",nav_expertise:"Expertise",nav_market_access:"Market Access",nav_advisory:"Advisory",nav_founder:"Founder",nav_contact:"Contact",
 hero_label:"Institutional Digital Assets · Cross-Border Advisory",hero_title:"Swiss trust.<br>Korean momentum.",
 intro_label:"Our point of view",intro_title:"Digital finance moves fast. Trust is built more carefully.",intro_copy:"Swiss Digital Asset Hub is an independent Switzerland-based platform developing institutional digital-asset and investment-product business between Switzerland and Korea. We focus on market intelligence, institutional origination and the partnerships required to move cross-border opportunities toward implementation.",
 swiss_label:"Zug · From within",swiss_title:"Where financial innovation becomes institutional business.",swiss_copy:"Switzerland combines regulated banking, asset management and one of the world's most established digital-asset ecosystems. We work from within this market to identify institutional opportunities and develop relevant business between Swiss and Korean financial institutions.",banking:"Banking",custody:"Custody",tokenisation:"Tokenisation",
@@ -697,11 +782,11 @@ market_access_label:"Institutional Market Access",market_access_title:"From prod
 statement_title:"From market intelligence.<br>To institutional opportunity.",statement_copy:"We believe cross-border work should lead beyond introductions — toward well-defined opportunities, institutional engagement and measurable business outcomes.",
 pathway_label:"From insight to execution",pathway_title:"One connected<br>commercial path.",path1_title:"Intelligence",path1_copy:"Market intelligence, institutional mapping, regulatory developments and competitive landscape.",path2_title:"Market Access",path2_copy:"Partner identification, executive engagement, institutional meetings and focused market visits.",path3_title:"Advisory",path3_copy:"Market-entry strategy, product positioning, partnership development and commercialisation.",path4_title:"Mandates",path4_copy:"Korea or Swiss representation, institutional business development and strategic projects.",monitor_label:"Institutional monitor",monitor_title:"Two markets.<br>One field of view.",formation:"Market formation",infrastructure:"Market infrastructure",m1a:"Token securities",m1b:"Policy development",m2a:"Stablecoins",m2b:"Regulatory formation",m3a:"CBDC / digital money",m3b:"Institutional pilots",m4a:"ETF internationalisation",m4b:"International expansion",m5a:"Tokenisation",m5b:"Active ecosystem",m6a:"Digital asset banking",m6b:"Regulated & mature",m7a:"ETP infrastructure",m7b:"Established market",m8a:"Institutional custody",m8b:"Bank-grade providers",
 advisory_label:"Advisory Network",advisory_title:"The right expertise for each engagement.",advisory_copy:"Swiss Digital Asset Hub works with an independent network of professionals across digital assets, financial services, technology, regulation and cross-border business. We bring together relevant expertise according to the needs of each engagement — combining institutional perspective with local market knowledge across Switzerland and Korea.",independent_expertise:"Independent<br>expertise",connected_markets:"Connected<br>markets",tag1:"Digital Assets & Markets",tag2:"Banking & Asset Management",tag3:"Regulation & Compliance",tag4:"Blockchain & Infrastructure",tag5:"Institutional Strategy",tag6:"Cross-Border Business",
-leadership_label:"Leadership",leadership_role:"Founder · Korea–Switzerland Institutional Business & Digital Assets",leadership_credential:"Certified Crypto Finance Expert (CCFE) · SAQ (Swiss Association for Quality) · ISO/IEC 17024",leadership_copy:"Rosa works at the intersection of Switzerland's financial innovation ecosystem and Korea's institutional transformation. Active in Switzerland's Crypto Valley ecosystem since 2018, she focuses on originating and developing institutional business across digital assets, investment products and cross-border financial infrastructure between Switzerland and Korea.",linkedin:"View LinkedIn profile ↗",fact1:"Switzerland ↔ Korea",fact2:"Institutional Origination",fact3:"Business Development",fact4:"Investment Products & Tokenisation",
+leadership_label:"Founder & Switzerland–Korea specialist",leadership_role:"Founder · Swiss–Korea Institutional Digital Assets & Market Development",leadership_credential:"Certified Crypto Finance Expert (CCFE) · SAQ (Swiss Association for Quality) · ISO/IEC 17024",leadership_copy:"Rosa Suk is a Switzerland-based specialist connecting Korea's institutional financial market with Switzerland's regulated digital-asset ecosystem. Active in Crypto Valley since 2018, she originates and develops cross-border business across digital-asset banking, custody, tokenisation, investment products, stablecoins and financial infrastructure.",affiliations_title:"Community Leadership & Memberships",affiliation1_role:"Korea Chapter Lead",affiliation_member:"Member",leadership_search:"Swiss–Korea institutional digital assets · Korea market entry · Cross-border financial partnerships",linkedin:"View LinkedIn profile ↗",fact1:"Switzerland ↔ Korea",fact2:"Institutional Origination",fact3:"Business Development",fact4:"Investment Products & Tokenisation",
 contact_label:"Start a conversation",contact_title:"Two markets.<br>One conversation to begin.",contact_services:"Institutional digital assets · Investment products · Tokenisation · Market entry · Institutional origination",contact_region:"Switzerland / Korea"
 },
 ko:{
-nav_intelligence:"인텔리전스",nav_about:"소개",nav_bridge:"스위스 ↔ 한국",nav_expertise:"전문 분야",nav_market_access:"기관 비즈니스 개발",nav_advisory:"어드바이저리",nav_contact:"문의",
+nav_intelligence:"인텔리전스",nav_about:"소개",nav_bridge:"스위스 ↔ 한국",nav_expertise:"전문 분야",nav_market_access:"기관 비즈니스 개발",nav_advisory:"어드바이저리",nav_founder:"설립자",nav_contact:"문의",
 hero_label:"기관 디지털자산 · 크로스보더 비즈니스",hero_title:"스위스의 신뢰.<br>한국의 역동성.",
 intro_label:"우리의 관점",intro_title:"디지털 금융은 빠르게 변화합니다. 신뢰는 오랜 시간에 걸쳐 만들어집니다.",
 intro_copy:"Swiss Digital Asset Hub는 스위스에 기반을 둔 독립 플랫폼으로, 스위스와 한국 간 기관 디지털자산 및 투자상품 비즈니스를 개발합니다. 시장 인텔리전스와 기관 비즈니스 발굴을 바탕으로 크로스보더 기회를 실제 사업화 단계로 발전시키는 데 집중합니다.",
@@ -727,9 +812,9 @@ advisory_label:"어드바이저 네트워크",advisory_title:"각 프로젝트�
 advisory_copy:"Swiss Digital Asset Hub는 디지털자산, 금융서비스, 기술, 규제 및 크로스보더 비즈니스 분야의 독립 전문가들과 협업합니다. 프로젝트의 목적과 시장 상황에 따라 필요한 전문성을 연결하고, 스위스와 한국의 현지 시장 이해를 결합해 보다 실질적인 인사이트와 실행을 지원합니다.",
 independent_expertise:"전문가의<br>인사이트",connected_markets:"스위스와<br>한국",
 tag1:"디지털자산 & 금융시장",tag2:"은행 & 자산운용",tag3:"규제 & 컴플라이언스",tag4:"블록체인 & 금융 인프라",tag5:"기관 전략",tag6:"크로스보더 비즈니스",
-leadership_label:"리더십",leadership_role:"Founder · Korea–Switzerland Institutional Business & Digital Assets",
+leadership_label:"설립자 · 스위스–한국 시장 전문가",leadership_role:"설립자 · 스위스–한국 기관 디지털자산 & 시장개발",
 leadership_credential:"Certified Crypto Finance Expert (CCFE) · SAQ (Swiss Association for Quality) · ISO/IEC 17024",
-leadership_copy:"Rosa는 스위스 금융혁신 생태계와 한국 기관금융의 변화가 만나는 지점에서 활동합니다. 2018년부터 스위스 Crypto Valley 생태계에 참여해 왔으며, 디지털자산, 투자상품 및 크로스보더 금융 인프라 분야에서 스위스와 한국 간 기관 비즈니스를 발굴하고 개발하는 데 집중하고 있습니다.",
+leadership_copy:"Rosa Suk은 한국 기관금융시장과 스위스의 규제 기반 디지털자산 생태계를 연결하는 스위스 현지 전문가입니다. 2018년부터 Crypto Valley 생태계에서 활동하며 디지털자산 은행, 커스터디, 토큰화, 투자상품, 스테이블코인 및 금융 인프라 분야의 크로스보더 기관 비즈니스를 발굴하고 개발하고 있습니다.",affiliations_title:"커뮤니티 리더십 & 회원 활동",affiliation1_role:"한국 챕터 리드",affiliation_member:"회원",leadership_search:"스위스–한국 기관 디지털자산 · 한국 시장진입 · 크로스보더 금융 파트너십",
 linkedin:"LinkedIn 프로필 보기 ↗",fact1:"스위스 ↔ 한국",fact2:"기관 비즈니스 발굴",fact3:"비즈니스 개발",fact4:"투자상품 & 토큰화",
 contact_label:"문의",contact_title:"스위스와 한국의<br>새로운 기회를 연결합니다.",
 contact_services:"기관 디지털자산 · 기관 비즈니스 개발 · ETF/ETP · 투자상품 & 토큰화 · 기관 비즈니스 발굴 프로그램",contact_region:"스위스 / 한국"
