@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -176,8 +175,9 @@
     .editorial-copy h3{
       margin:18px 0 28px;
       font-family:Georgia,"Times New Roman",serif;
-      font-size:clamp(30px,3.3vw,48px);
-      line-height:1.02;font-weight:400;letter-spacing:-.04em
+      max-width:700px;
+      font-size:clamp(30px,2.85vw,46px);
+      line-height:1.08;font-weight:400;letter-spacing:-.035em
     }
     .editorial-copy p{
       max-width:520px;margin:0;
@@ -217,19 +217,20 @@
     .bridge-copy p{margin:0;max-width:540px;color:#bcc5c1;line-height:1.8;font-size:20px}
 
     .seoul{
-      display:grid;grid-template-columns:.78fr 1.22fr;
-      min-height:760px;background:#fff
+      display:grid;grid-template-columns:1.05fr .95fr;
+      min-height:720px;background:#fff
     }
     .seoul-copy{
-      padding:90px 7vw;display:flex;flex-direction:column;justify-content:center
+      padding:82px 5vw;display:flex;flex-direction:column;justify-content:center
     }
     .seoul-copy h3{
       margin:18px 0 28px;
       font-family:Georgia,"Times New Roman",serif;
-      font-size:clamp(30px,3.3vw,48px);
-      line-height:1.02;font-weight:400;letter-spacing:-.04em
+      max-width:700px;
+      font-size:clamp(30px,2.85vw,46px);
+      line-height:1.08;font-weight:400;letter-spacing:-.035em
     }
-    .seoul-copy p{margin:0;color:#616762;line-height:1.8;font-size:21px}
+    .seoul-copy p{margin:0;max-width:690px;color:#616762;line-height:1.72;font-size:20px}
     .photo.seoul-img{
       background-image:
       linear-gradient(rgba(14,18,18,.05),rgba(14,18,18,.15)),
@@ -544,8 +545,9 @@
     <nav>
       <a href="#intelligence" data-i18n="nav_intelligence">Intelligence</a>
       <a href="#bridge" data-i18n="nav_bridge">Switzerland ↔ Korea</a>
-      <a href="#market-access" data-i18n="nav_market_access">Market Access</a>
-      <a href="#pathway" data-i18n="nav_advisory">Advisory</a>
+      <a href="#market-access" data-i18n="nav_market_access">Solutions</a>
+      <a href="#use-cases">Use Cases</a>
+      <a href="#pathway" data-i18n="nav_advisory">How We Work</a>
       <a href="#about" data-i18n="nav_about">About</a>
       <a href="#rosa-suk" data-i18n="nav_founder">Founder</a>
       <a href="#contact" data-i18n="nav_contact">Contact</a>
@@ -561,8 +563,8 @@
 <main id="top">
   <section class="hero">
     <div class="wrap hero-inner">
-      <div class="label" data-i18n="hero_label">Institutional Digital Assets · Cross-Border Advisory</div>
-      <h1 data-i18n-html="hero_title">Swiss trust.<br>Korean momentum.</h1>
+      <div class="label" data-i18n="hero_label">Korea ↔ Europe · Institutional Digital Finance</div>
+      <h1 data-i18n-html="hero_title">From opportunity.<br>To regulated execution.</h1>
       <div class="hero-meta"><div>Zurich</div><div>Zug</div><div>Seoul</div></div>
     </div>
   </section>
@@ -571,8 +573,8 @@
     <div class="wrap intro-grid">
       <div class="label" data-i18n="intro_label">Our point of view</div>
       <div>
-        <h2 data-i18n="intro_title">Digital finance moves fast. Trust is built more carefully.</h2>
-        <p class="intro-copy" data-i18n="intro_copy">Swiss Digital Asset Hub is an independent Switzerland-based platform developing institutional digital-asset and investment-product business between Switzerland and Korea. We focus on market intelligence, institutional origination and the partnerships required to move cross-border opportunities toward implementation.</p>
+        <h2 data-i18n="intro_title">Institutional opportunities need the right structure, partners and execution.</h2>
+        <p class="intro-copy" data-i18n="intro_copy">Swiss Digital Asset Hub works between Korea and Europe to turn institutional opportunities into executable business. We combine market intelligence, institutional origination and cross-border execution across capital markets, banking, tokenisation, settlement and financial infrastructure.</p>
         <div class="red-rule"></div>
       </div>
     </div>
@@ -582,20 +584,20 @@
     <div class="photo zug" aria-label="Lake Zug with the Swiss Alps"></div>
     <div class="editorial-copy">
       <div class="label" data-i18n="swiss_label">Zug · From within</div>
-      <h3 data-i18n="swiss_title">Where financial innovation becomes institutional business.</h3>
-      <p data-i18n="swiss_copy">Switzerland combines regulated banking, asset management and one of the world's most established digital-asset ecosystems. We work from within this market to identify institutional opportunities and develop relevant business between Swiss and Korean financial institutions.</p>
-      <div class="micro"><span data-i18n="banking">Banking</span><span data-i18n="custody">Custody</span><span data-i18n="tokenisation">Tokenisation</span></div>
+      <h3 data-i18n="swiss_title">Where regulated finance meets digital-asset infrastructure.</h3>
+      <p data-i18n="swiss_copy">Switzerland combines regulated banking, capital markets, asset management and a mature digital-asset ecosystem. We use this market as an execution base — identifying the right regulated partners for each Korean institutional opportunity.</p>
+      <div class="micro"><span data-i18n="banking">Capital Markets</span><span data-i18n="custody">Banking</span><span data-i18n="tokenisation">Infrastructure</span></div>
     </div>
   </section>
 
   <section class="bridge" id="bridge">
     <div class="wrap">
       <div class="label" data-i18n="bridge_label">Switzerland ↔ Korea</div>
-      <h2 data-i18n-html="bridge_title">From market insight.<br><em>To institutional business.</em></h2>
+      <h2 data-i18n-html="bridge_title">From Korean opportunity.<br><em>To European execution.</em></h2>
       <div class="route"><div class="city">Zurich / Zug</div><div class="arrow">↔</div><div class="city">Seoul</div></div>
       <div class="bridge-copy">
-        <p data-i18n="bridge_copy_ch">For Swiss digital-asset firms, we identify Korean institutional demand, shape market positioning and originate business opportunities with relevant financial institutions and strategic partners.</p>
-        <p data-i18n="bridge_copy_kr">For Korean financial institutions, we develop routes into Switzerland and Europe across investment products, digital assets and financial infrastructure — from opportunity definition to the right implementation partners.</p>
+        <p data-i18n="bridge_copy_ch">For European and Swiss financial firms, we identify qualified Korean institutional demand, shape market positioning and originate relevant business with banks, securities firms, asset managers, fintechs and infrastructure providers.</p>
+        <p data-i18n="bridge_copy_kr">For Korean institutions, we design the route into Europe — from feasibility and product structure to banking, custody, tokenisation, settlement, distribution and the right implementation partners.</p>
       </div>
     </div>
   </section>
@@ -603,8 +605,8 @@
   <section class="seoul">
     <div class="seoul-copy">
       <div class="label" data-i18n="korea_label">Korea · The other side</div>
-      <h3 data-i18n="korea_title">Understanding where Korea’s institutional market is moving next.</h3>
-      <p data-i18n="korea_copy">Korea is entering a new phase of institutional digital finance across tokenisation, stablecoins, investment products and market infrastructure. Effective cross-border business requires understanding not only regulation and market structure, but what financial institutions actually need and when they are ready to act.</p>
+      <h3 data-i18n="korea_title">Understanding what Korean institutions need — and what can actually be executed in Europe.</h3>
+      <p data-i18n="korea_copy">Korea is entering a new phase across token securities, stablecoins, investment products and market infrastructure. Cross-border execution requires more than introductions: it requires clear requirements, the right European structure and partners able to deliver.</p>
       <div class="red-rule"></div>
     </div>
     <div class="photo seoul-img" aria-label="Seoul financial district"></div>
@@ -629,13 +631,13 @@
     <div class="wrap">
       <div class="expertise-top">
         <div class="label" data-i18n="expertise_label">Expertise</div>
-        <h2 data-i18n="expertise_title">Focused where institutional finance meets digital assets.</h2>
+        <h2 data-i18n="expertise_title">Four capabilities. One route to execution.</h2>
       </div>
       <div class="services">
-        <div class="service"><div class="num">01</div><h3 data-i18n="service1_title">Institutional Digital Assets</h3><p data-i18n="service1_copy">Custody, banking, ETF/ETP structures, tokenised assets, stablecoins, execution and institutional infrastructure.</p></div>
-        <div class="service"><div class="num">02</div><h3 data-i18n="service2_title">Market Entry</h3><p data-i18n="service2_copy">Institutional market intelligence, positioning and go-to-market development for firms expanding between Switzerland, Europe and Korea.</p></div>
+        <div class="service"><div class="num">01</div><h3 data-i18n="service1_title">Market Intelligence &amp; Feasibility</h3><p data-i18n="service1_copy">Market structure, regulation, competitor landscape, investor readiness and commercial feasibility for Korea–Europe opportunities.</p></div>
+        <div class="service"><div class="num">02</div><h3 data-i18n="service2_title">Execution Strategy</h3><p data-i18n="service2_copy">Selecting the right combination of product structuring, banking, custody, tokenisation, settlement and distribution.</p></div>
         <div class="service"><div class="num">03</div><h3 data-i18n="service3_title">Investment Products & Tokenisation</h3><p data-i18n="service3_copy">Origination and development of institutional opportunities across banks, asset managers, wealth managers, brokers, digital-asset firms and financial-infrastructure partners.</p></div>
-        <div class="service"><div class="num">04</div><h3 data-i18n="service4_title">Executive Access</h3><p data-i18n="service4_copy">Targeted institutional IR, executive engagement and market access designed around specific business objectives rather than introductions alone.</p></div>
+        <div class="service"><div class="num">04</div><h3 data-i18n="service4_title">European Execution</h3><p data-i18n="service4_copy">Partner selection, institutional meetings, PoC coordination, structuring discussions and commercial follow-through in Europe.</p></div>
       </div>
     </div>
   </section>
@@ -644,42 +646,57 @@
     <div class="wrap">
       <div class="market-access-top">
         <div class="label" data-i18n="market_access_label">Institutional Market Access</div>
-        <h2 data-i18n="market_access_title">From product strategy to institutional access and implementation.</h2>
+        <h2 data-i18n="market_access_title">From Korean requirements to the right European solution stack.</h2>
       </div>
       <div class="access-flow">
         <div class="access-node">
-          <div class="eyebrow" data-i18n="access1_eyebrow">Asian Financial Institutions</div>
-          <h3 data-i18n="access1_title">Products &amp; Strategy</h3>
-          <p data-i18n="access1_copy">ETF/ETP strategies, tokenised products, RWA initiatives and cross-border expansion plans.</p>
+          <div class="eyebrow" data-i18n="access1_eyebrow">Korean Institutions</div>
+          <h3 data-i18n="access1_title">Opportunity &amp; Requirements</h3>
+          <p data-i18n="access1_copy">Asset-management strategies, RWA initiatives, banking and payment needs, tokenisation projects and infrastructure expansion.</p>
         </div>
         <div class="access-arrow">→</div>
         <div class="access-node">
           <div class="eyebrow">SDAH</div>
-          <h3 data-i18n="access2_title">Swiss Institutional Desk</h3>
-          <p data-i18n="access2_copy">Market intelligence, institutional origination, investor mapping, product positioning and Swiss institutional business development.</p>
+          <h3 data-i18n="access2_title">Institutional Business Development</h3>
+          <p data-i18n="access2_copy">Requirement definition, feasibility, partner selection and cross-border coordination.</p>
         </div>
         <div class="access-arrow">→</div>
         <div class="access-node">
-          <div class="eyebrow" data-i18n="access3_eyebrow">European &amp; Swiss Ecosystem</div>
-          <h3 data-i18n="access3_title">Distribution &amp; Implementation</h3>
-          <p data-i18n="access3_copy">Relevant pathways through wealth managers, asset managers, banks, brokers and infrastructure providers in traditional and digital markets.</p>
+          <div class="eyebrow" data-i18n="access3_eyebrow">European Regulated Ecosystem</div>
+          <h3 data-i18n="access3_title">Execution Partners</h3>
+          <p data-i18n="access3_copy">Capital markets, banking, custody, tokenisation, settlement, distribution and financial-infrastructure partners selected for the specific case.</p>
         </div>
       </div>
       <div class="access-note">
-        <p data-i18n="access_note1">We support financial institutions entering Switzerland and Europe from opportunity definition and product positioning through institutional engagement and the right implementation partnerships.</p>
-        <p data-i18n="access_note2">For Swiss and European firms, we translate Korean market developments into actionable institutional opportunities and develop business with relevant decision-makers and partners.</p>
+        <p data-i18n="access_note1">We do not start with a provider. We start with the institution’s objective, then determine the most appropriate regulated route and implementation partners.</p>
+        <p data-i18n="access_note2">For European firms, we translate Korean institutional demand into qualified opportunities and coordinate the path from first discussion to a commercially defined next step.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="expertise" id="use-cases">
+    <div class="wrap">
+      <div class="expertise-top">
+        <div class="label">Use cases</div>
+        <h2>Practical Korea–Europe pathways.</h2>
+      </div>
+      <div class="services">
+        <div class="service"><div class="num">01</div><h3>Capital Markets</h3><p>Korean asset manager → European investment product. Strategy, product wrapper, ISIN / structuring, distribution and optional tokenisation.</p></div>
+        <div class="service"><div class="num">02</div><h3>RWA &amp; Securities</h3><p>Korean securities firm → European RWA structure. Underlying asset, SPV / legal structure, securitisation, tokenisation and institutional access.</p></div>
+        <div class="service"><div class="num">03</div><h3>Digital Money</h3><p>Korean bank or fintech → European settlement. KRW / stablecoin flows, regulated banking, EUR settlement and European counterparties.</p></div>
+        <div class="service"><div class="num">04</div><h3>Infrastructure</h3><p>Korean blockchain infrastructure → European institutions. Wallet, blockchain, staking, tokenisation technology and regulated financial connectivity.</p></div>
       </div>
     </div>
   </section>
 
   <section class="pathway" id="pathway">
     <div class="wrap">
-      <div class="pathway-top"><div class="label" data-i18n="pathway_label">From insight to execution</div><h2 data-i18n-html="pathway_title">One connected<br>commercial path.</h2></div>
+      <div class="pathway-top"><div class="label" data-i18n="pathway_label">From insight to execution</div><h2 data-i18n-html="pathway_title">One disciplined<br>execution path.</h2></div>
       <div class="pathway-grid">
-        <article class="path-step"><div class="num">01</div><h3 data-i18n="path1_title">Intelligence</h3><p data-i18n="path1_copy">Market intelligence, institutional mapping, regulatory developments and competitive landscape.</p></article>
-        <article class="path-step"><div class="num">02</div><h3 data-i18n="path2_title">Market Access</h3><p data-i18n="path2_copy">Partner identification, executive engagement, institutional meetings and focused market visits.</p></article>
-        <article class="path-step"><div class="num">03</div><h3 data-i18n="path3_title">Advisory</h3><p data-i18n="path3_copy">Market-entry strategy, product positioning, partnership development and commercialisation.</p></article>
-        <article class="path-step"><div class="num">04</div><h3 data-i18n="path4_title">Mandates</h3><p data-i18n="path4_copy">Korea or Swiss representation, institutional business development and strategic projects.</p></article>
+        <article class="path-step"><div class="num">01</div><h3 data-i18n="path1_title">Assess</h3><p data-i18n="path1_copy">Define the opportunity, requirements, regulatory context, market fit and decision-makers.</p></article>
+        <article class="path-step"><div class="num">02</div><h3 data-i18n="path2_title">Structure</h3><p data-i18n="path2_copy">Design the relevant product, banking, tokenisation, custody, settlement and distribution pathway.</p></article>
+        <article class="path-step"><div class="num">03</div><h3 data-i18n="path3_title">Match</h3><p data-i18n="path3_copy">Select and engage the right regulated institutions, infrastructure providers and specialist partners.</p></article>
+        <article class="path-step"><div class="num">04</div><h3 data-i18n="path4_title">Execute</h3><p data-i18n="path4_copy">Coordinate meetings, PoCs, structuring discussions and commercial follow-through toward implementation.</p></article>
       </div>
     </div>
   </section>
@@ -697,8 +714,8 @@
   <section class="statement">
     <div class="wrap">
       <div class="red-rule"></div>
-      <h2 data-i18n-html="statement_title">From market intelligence.<br>To institutional opportunity.</h2>
-      <p data-i18n="statement_copy">We believe cross-border work should lead beyond introductions — toward well-defined opportunities, institutional engagement and measurable business outcomes.</p>
+      <h2 data-i18n-html="statement_title">Tokenization is not the destination.<br>Institutional usability is.</h2>
+      <p data-i18n="statement_copy">We determine where tokenisation adds value — and how it connects to legal structure, custody, settlement, distribution and the regulated financial system.</p>
     </div>
   </section>
 
@@ -706,8 +723,8 @@
     <div class="wrap identity-grid">
       <div class="label" data-i18n="advisory_label">Advisory Network</div>
       <div class="identity-copy">
-        <h2 data-i18n="advisory_title">The right expertise for each engagement.</h2>
-        <p data-i18n="advisory_copy">Swiss Digital Asset Hub works with an independent network of professionals across digital assets, financial services, technology, regulation and cross-border business. We bring together relevant expertise according to the needs of each engagement — combining institutional perspective with local market knowledge across Switzerland and Korea.</p>
+        <h2 data-i18n="advisory_title">Independent expertise. Partner-neutral execution.</h2>
+        <p data-i18n="advisory_copy">Swiss Digital Asset Hub works with an independent network across banking, capital markets, digital assets, technology, regulation and cross-border business. Partners are selected according to the requirements of each engagement rather than a fixed provider model.</p>
         <div class="identity-graphic">
           <div class="identity-line"><div class="identity-country" data-i18n-html="independent_expertise">Independent<br>expertise</div><div class="identity-arrow">↔</div><div class="identity-country" data-i18n-html="connected_markets">Connected<br>markets</div></div>
         </div>
@@ -771,23 +788,23 @@
 const translations={
 en:{
 nav_intelligence:"Intelligence",nav_about:"About",nav_bridge:"Switzerland ↔ Korea",nav_expertise:"Expertise",nav_market_access:"Market Access",nav_advisory:"Advisory",nav_founder:"Founder",nav_contact:"Contact",
-hero_label:"Institutional Digital Assets · Cross-Border Advisory",hero_title:"Swiss trust.<br>Korean momentum.",
-intro_label:"Our point of view",intro_title:"Digital finance moves fast. Trust is built more carefully.",intro_copy:"Swiss Digital Asset Hub is an independent Switzerland-based platform developing institutional digital-asset and investment-product business between Switzerland and Korea. We focus on market intelligence, institutional origination and the partnerships required to move cross-border opportunities toward implementation.",
-swiss_label:"Zug · From within",swiss_title:"Where financial innovation becomes institutional business.",swiss_copy:"Switzerland combines regulated banking, asset management and one of the world's most established digital-asset ecosystems. We work from within this market to identify institutional opportunities and develop relevant business between Swiss and Korean financial institutions.",banking:"Banking",custody:"Custody",tokenisation:"Tokenisation",
-bridge_label:"Switzerland ↔ Korea",bridge_title:"From market insight.<br><em>To institutional business.</em>",bridge_copy_ch:"For Swiss digital-asset firms, we identify Korean institutional demand, shape market positioning and originate business opportunities with relevant financial institutions and strategic partners.",bridge_copy_kr:"For Korean financial institutions, we develop routes into Switzerland and Europe across investment products, digital assets and financial infrastructure — from opportunity definition to the right implementation partners.",
-korea_label:"Korea · The other side",korea_title:"Understanding where Korea’s institutional market is moving next.",korea_copy:"Korea is entering a new phase of institutional digital finance across tokenisation, stablecoins, investment products and market infrastructure. Effective cross-border business requires understanding not only regulation and market structure, but what financial institutions actually need and when they are ready to act.",
+hero_label:"Korea ↔ Europe · Institutional Digital Finance",hero_title:"From opportunity.<br>To regulated execution.",
+intro_label:"Our point of view",intro_title:"Institutional opportunities need the right structure, partners and execution.",intro_copy:"Swiss Digital Asset Hub works between Korea and Europe to turn institutional opportunities into executable business. We combine market intelligence, institutional origination and cross-border execution across capital markets, banking, tokenisation, settlement and financial infrastructure.",
+swiss_label:"Zug · From within",swiss_title:"Where regulated finance meets digital-asset infrastructure.",swiss_copy:"Switzerland combines regulated banking, capital markets, asset management and a mature digital-asset ecosystem. We use this market as an execution base — identifying the right regulated partners for each Korean institutional opportunity.",banking:"Banking",custody:"Custody",tokenisation:"Tokenisation",
+bridge_label:"Switzerland ↔ Korea",bridge_title:"From Korean opportunity.<br><em>To European execution.</em>",bridge_copy_ch:"For European and Swiss financial firms, we identify qualified Korean institutional demand, shape market positioning and originate relevant business with banks, securities firms, asset managers, fintechs and infrastructure providers.",bridge_copy_kr:"For Korean institutions, we design the route into Europe — from feasibility and product structure to banking, custody, tokenisation, settlement, distribution and the right implementation partners.",
+korea_label:"Korea · The other side",korea_title:"Understanding what Korean institutions need — and what can actually be executed in Europe.",korea_copy:"Korea is entering a new phase across token securities, stablecoins, investment products and market infrastructure. Cross-border execution requires more than introductions: it requires clear requirements, the right European structure and partners able to deliver.",
 intelligence_label:"Latest intelligence",intelligence_title:"What institutions need<br>to understand next.",intelligence_intro:"Focused analysis on the market shifts shaping institutional digital assets and cross-border capital between Switzerland and Korea.",brief1_meta:"Korea · Tokenisation",brief1_title:"Korea's Token Securities Market",brief1_copy:"What the emerging framework means for international financial institutions and infrastructure providers.",brief2_meta:"Asset Management",brief2_title:"Korean ETFs Go Global",brief2_copy:"Routes through London, Frankfurt, Switzerland and the Middle East.",brief3_meta:"Market Infrastructure",brief3_title:"Where Switzerland and Korea Complement Each Other",brief3_copy:"Mapping product, banking, custody, distribution and technology capabilities.",brief4_meta:"Digital Money",brief4_title:"From CBDC to Stablecoins",brief4_copy:"Korea's evolving institutional money infrastructure and its cross-border relevance.",read_brief:"Discuss the brief ↗",read_analysis:"Discuss the analysis ↗",explore_theme:"Explore the theme ↗",
-expertise_label:"Expertise",expertise_title:"Focused where institutional finance meets digital assets.",service1_title:"Institutional Digital Assets",service1_copy:"Custody, banking, ETF/ETP structures, tokenised assets, stablecoins, execution and institutional infrastructure.",service2_title:"Market Entry",service2_copy:"Institutional market intelligence, positioning and go-to-market development for firms expanding between Switzerland, Europe and Korea.",service3_title:"Investment Products & Tokenisation",service3_copy:"Origination and development of institutional opportunities across banks, asset managers, wealth managers, brokers, digital-asset firms and financial-infrastructure partners.",service4_title:"Executive Access",service4_copy:"Targeted institutional IR, executive engagement and market access designed around specific business objectives rather than introductions alone.",
-market_access_label:"Institutional Market Access",market_access_title:"From product strategy to institutional access and implementation.",access1_eyebrow:"Asian Financial Institutions",access1_title:"Products & Strategy",access1_copy:"ETF/ETP strategies, tokenised products, RWA initiatives and cross-border expansion plans.",access2_title:"Swiss Institutional Desk",access2_copy:"Market intelligence, institutional origination, investor mapping, product positioning and Swiss institutional business development.",access3_eyebrow:"European & Swiss Ecosystem",access3_title:"Distribution & Execution",access3_copy:"Relevant pathways through wealth managers, asset managers, banks, brokers and infrastructure providers in traditional and digital markets.",access_note1:"We support financial institutions entering Switzerland and Europe from opportunity definition and product positioning through institutional engagement and the right implementation partnerships.",access_note2:"For Swiss and European firms, we translate Korean market developments into actionable institutional opportunities and develop business with relevant decision-makers and partners.",
-statement_title:"From market intelligence.<br>To institutional opportunity.",statement_copy:"We believe cross-border work should lead beyond introductions — toward well-defined opportunities, institutional engagement and measurable business outcomes.",
-pathway_label:"From insight to execution",pathway_title:"One connected<br>commercial path.",path1_title:"Intelligence",path1_copy:"Market intelligence, institutional mapping, regulatory developments and competitive landscape.",path2_title:"Market Access",path2_copy:"Partner identification, executive engagement, institutional meetings and focused market visits.",path3_title:"Advisory",path3_copy:"Market-entry strategy, product positioning, partnership development and commercialisation.",path4_title:"Mandates",path4_copy:"Korea or Swiss representation, institutional business development and strategic projects.",monitor_label:"Institutional monitor",monitor_title:"Two markets.<br>One field of view.",formation:"Market formation",infrastructure:"Market infrastructure",m1a:"Token securities",m1b:"Policy development",m2a:"Stablecoins",m2b:"Regulatory formation",m3a:"CBDC / digital money",m3b:"Institutional pilots",m4a:"ETF internationalisation",m4b:"International expansion",m5a:"Tokenisation",m5b:"Active ecosystem",m6a:"Digital asset banking",m6b:"Regulated & mature",m7a:"ETP infrastructure",m7b:"Established market",m8a:"Institutional custody",m8b:"Bank-grade providers",
-advisory_label:"Advisory Network",advisory_title:"The right expertise for each engagement.",advisory_copy:"Swiss Digital Asset Hub works with an independent network of professionals across digital assets, financial services, technology, regulation and cross-border business. We bring together relevant expertise according to the needs of each engagement — combining institutional perspective with local market knowledge across Switzerland and Korea.",independent_expertise:"Independent<br>expertise",connected_markets:"Connected<br>markets",tag1:"Digital Assets & Markets",tag2:"Banking & Asset Management",tag3:"Regulation & Compliance",tag4:"Blockchain & Infrastructure",tag5:"Institutional Strategy",tag6:"Cross-Border Business",
+expertise_label:"Expertise",expertise_title:"Four capabilities. One route to execution.",service1_title:"Institutional Digital Assets",service1_copy:"Custody, banking, ETF/ETP structures, tokenised assets, stablecoins, execution and institutional infrastructure.",service2_title:"Market Entry",service2_copy:"Institutional market intelligence, positioning and go-to-market development for firms expanding between Switzerland, Europe and Korea.",service3_title:"Investment Products & Tokenisation",service3_copy:"Origination and development of institutional opportunities across banks, asset managers, wealth managers, brokers, digital-asset firms and financial-infrastructure partners.",service4_title:"Executive Access",service4_copy:"Targeted institutional IR, executive engagement and market access designed around specific business objectives rather than introductions alone.",
+market_access_label:"Institutional Market Access",market_access_title:"From Korean requirements to the right European solution stack.",access1_eyebrow:"Korean Institutions",access1_title:"Products & Strategy",access1_copy:"Asset-management strategies, RWA initiatives, banking and payment needs, tokenisation projects and infrastructure expansion.",access2_title:"Institutional Business Development",access2_copy:"Requirement definition, feasibility, partner selection and cross-border coordination.",access3_eyebrow:"European & Swiss Ecosystem",access3_title:"Distribution & Execution",access3_copy:"Capital markets, banking, custody, tokenisation, settlement, distribution and financial-infrastructure partners selected for the specific case.",access_note1:"We do not start with a provider. We start with the institution’s objective, then determine the most appropriate regulated route and implementation partners.",access_note2:"For European firms, we translate Korean institutional demand into qualified opportunities and coordinate the path from first discussion to a commercially defined next step.",
+statement_title:"Tokenization is not the destination.<br>Institutional usability is.",statement_copy:"We determine where tokenisation adds value — and how it connects to legal structure, custody, settlement, distribution and the regulated financial system.",
+pathway_label:"From insight to execution",pathway_title:"One disciplined<br>execution path.",path1_title:"Intelligence",path1_copy:"Market intelligence, institutional mapping, regulatory developments and competitive landscape.",path2_title:"Market Access",path2_copy:"Partner identification, executive engagement, institutional meetings and focused market visits.",path3_title:"Advisory",path3_copy:"Market-entry strategy, product positioning, partnership development and commercialisation.",path4_title:"Mandates",path4_copy:"Korea or Swiss representation, institutional business development and strategic projects.",monitor_label:"Institutional monitor",monitor_title:"Two markets.<br>One field of view.",formation:"Market formation",infrastructure:"Market infrastructure",m1a:"Token securities",m1b:"Policy development",m2a:"Stablecoins",m2b:"Regulatory formation",m3a:"CBDC / digital money",m3b:"Institutional pilots",m4a:"ETF internationalisation",m4b:"International expansion",m5a:"Tokenisation",m5b:"Active ecosystem",m6a:"Digital asset banking",m6b:"Regulated & mature",m7a:"ETP infrastructure",m7b:"Established market",m8a:"Institutional custody",m8b:"Bank-grade providers",
+advisory_label:"Advisory Network",advisory_title:"Independent expertise. Partner-neutral execution.",advisory_copy:"Swiss Digital Asset Hub works with an independent network across banking, capital markets, digital assets, technology, regulation and cross-border business. Partners are selected according to the requirements of each engagement rather than a fixed provider model.",independent_expertise:"Independent<br>expertise",connected_markets:"Connected<br>markets",tag1:"Digital Assets & Markets",tag2:"Banking & Asset Management",tag3:"Regulation & Compliance",tag4:"Blockchain & Infrastructure",tag5:"Institutional Strategy",tag6:"Cross-Border Business",
 leadership_label:"Founder & Switzerland–Korea specialist",leadership_role:"Founder · Swiss–Korea Institutional Digital Assets & Market Development",leadership_credential:"Certified Crypto Finance Expert (CCFE) · SAQ (Swiss Association for Quality) · ISO/IEC 17024",leadership_copy:"Rosa Suk is a Switzerland-based specialist connecting Korea's institutional financial market with Switzerland's regulated digital-asset ecosystem. Active in Crypto Valley since 2018, she originates and develops cross-border business across digital-asset banking, custody, tokenisation, investment products, stablecoins and financial infrastructure.",affiliations_title:"Community Leadership & Memberships",affiliation1_role:"Korea Chapter Lead",affiliation_member:"Member",leadership_search:"Swiss–Korea institutional digital assets · Korea market entry · Cross-border financial partnerships",linkedin:"View LinkedIn profile ↗",fact1:"Switzerland ↔ Korea",fact2:"Institutional Origination",fact3:"Business Development",fact4:"Investment Products & Tokenisation",
 contact_label:"Start a conversation",contact_title:"Two markets.<br>One conversation to begin.",contact_services:"Institutional digital assets · Investment products · Tokenisation · Market entry · Institutional origination",contact_region:"Switzerland / Korea"
 },
 ko:{
 nav_intelligence:"인텔리전스",nav_about:"소개",nav_bridge:"스위스 ↔ 한국",nav_expertise:"전문 분야",nav_market_access:"기관 비즈니스 개발",nav_advisory:"어드바이저리",nav_founder:"설립자",nav_contact:"문의",
-hero_label:"기관 디지털자산 · 크로스보더 비즈니스",hero_title:"스위스의 신뢰.<br>한국의 역동성.",
+hero_label:"한국 ↔ 유럽 · 기관 디지털금융",hero_title:"기회에서.<br>실행 가능한 비즈니스로.",
 intro_label:"우리의 관점",intro_title:"디지털 금융은 빠르게 변화합니다. 신뢰는 오랜 시간에 걸쳐 만들어집니다.",
 intro_copy:"Swiss Digital Asset Hub는 스위스에 기반을 둔 독립 플랫폼으로, 스위스와 한국 간 기관 디지털자산 및 투자상품 비즈니스를 개발합니다. 시장 인텔리전스와 기관 비즈니스 발굴을 바탕으로 크로스보더 기회를 실제 사업화 단계로 발전시키는 데 집중합니다.",
 swiss_label:"주크 · 스위스 현지 네트워크",swiss_title:"금융 혁신을 기관 비즈니스로 연결합니다.",
