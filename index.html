@@ -534,6 +534,11 @@
       .route .arrow,.identity-arrow{text-align:left;transform:rotate(90deg);width:max-content}
       .brief-grid,.pathway-grid{grid-template-columns:1fr}.brief,.brief:nth-child(even){padding:30px 0 58px;border-right:0}.brief:nth-child(even) .brief-link{left:0}.path-step,.path-step:not(:first-child){padding:28px 0;border-right:0;border-bottom:1px solid #56645f;min-height:auto}.path-step h3{margin-top:30px}.market-row{grid-template-columns:1fr;gap:5px}
     }
+
+    .intelligence-status{font-size:14px;color:#596568;margin:-30px 0 22px;min-height:18px}
+    .brief .brief-link{cursor:pointer}
+    .brief .brief-meta{line-height:1.6}
+    .brief .brief-link:focus-visible{outline:2px solid var(--red);outline-offset:4px}
   </style>
 </head>
 <body>
@@ -618,7 +623,8 @@
         <div class="label" data-i18n="intelligence_label">Latest intelligence</div>
         <div><h2 data-i18n-html="intelligence_title">What institutions need<br>to understand next.</h2><p class="intelligence-intro" data-i18n="intelligence_intro">Focused analysis on the market shifts shaping institutional digital assets and cross-border capital between Switzerland and Korea.</p></div>
       </div>
-      <div class="brief-grid">
+      <div class="intelligence-status" id="intelligence-status" aria-live="polite"></div>
+      <div class="brief-grid" id="ai-brief-grid">
         <article class="brief"><div class="brief-meta" data-i18n="brief1_meta">Korea · Tokenisation</div><h3 data-i18n="brief1_title">Korea's Token Securities Market</h3><p data-i18n="brief1_copy">What the emerging framework means for international financial institutions and infrastructure providers.</p><a class="brief-link" href="#contact" data-i18n="read_brief">Discuss the brief ↗</a></article>
         <article class="brief"><div class="brief-meta" data-i18n="brief2_meta">Asset Management</div><h3 data-i18n="brief2_title">European Market Expansion</h3><p data-i18n="brief2_copy">European market access, product strategy, institutional distribution and local partnerships.</p><a class="brief-link" href="#contact" data-i18n="read_analysis">Discuss the analysis ↗</a></article>
         <article class="brief"><div class="brief-meta" data-i18n="brief3_meta">Market Infrastructure</div><h3 data-i18n="brief3_title">Where Switzerland and Korea Complement Each Other</h3><p data-i18n="brief3_copy">Mapping product, banking, custody, distribution and technology capabilities.</p><a class="brief-link" href="#contact" data-i18n="explore_theme">Explore the theme ↗</a></article>
@@ -851,6 +857,29 @@ menuBtn.addEventListener("click",()=>{const open=mobileNav.classList.toggle("ope
 mobileNav.querySelectorAll("a").forEach(link=>link.addEventListener("click",()=>{mobileNav.classList.remove("open");menuBtn.setAttribute("aria-expanded","false");menuBtn.textContent="☰"}));
 document.getElementById("year").textContent=new Date().getFullYear();
 setLanguage(localStorage.getItem("sdah-language")||"en");
+
+// Approved articles only: data/articles.json is updated after editorial PR merge.
+const sdahNews={items:[]};
+function renderSdahNews(){
+ const grid=document.getElementById('ai-brief-grid'), status=document.getElementById('intelligence-status');
+ if(!grid || !sdahNews.items.length)return;
+ const ko=document.documentElement.lang==='ko';
+ grid.replaceChildren();
+ sdahNews.items.slice(0,4).forEach(a=>{
+   const card=document.createElement('article');card.className='brief';
+   const meta=document.createElement('div');meta.className='brief-meta';meta.textContent=(a.category||'Swiss Finance')+' · '+(a.published_at||'').slice(0,10);
+   const title=document.createElement('h3');title.textContent=(ko?a.title_ko:a.title_en)||a.title_en;
+   const summary=document.createElement('p');summary.textContent=(ko?a.summary_ko:a.summary_en)||a.summary_en;
+   const link=document.createElement('a');link.className='brief-link';link.href='intelligence.html?article='+encodeURIComponent(a.id);link.textContent=ko?'분석 읽기 ↗':'Read analysis ↗';
+   card.append(meta,title,summary,link);grid.append(card);
+ });
+ status.textContent=ko?'SDAH가 검토하고 승인한 스위스 금융시장 분석':'Swiss market analysis reviewed and approved by SDAH';
+}
+fetch('data/articles.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('No feed');return r.json()}).then(data=>{
+ sdahNews.items=Array.isArray(data.articles)?data.articles:[];renderSdahNews();
+}).catch(()=>{/* preserve original editorial cards when no approved feed */});
+const originalSetLanguage=setLanguage;
+setLanguage=function(lang){originalSetLanguage(lang);renderSdahNews()};
 </script>
 </body>
 </html>
