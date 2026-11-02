@@ -1,192 +1,122 @@
-"""SDAH institutional RSS candidate collector. Free, review-only; never publishes."""
-import hashlib
-import html
-import json
-import os
-import re
-import sys
-from datetime import datetime, timedelta, timezone
-from difflib import SequenceMatcher
-from pathlib import Path
-from urllib.parse import parse_qsl, urlencode, urlparse, urlunparse
-
-import feedparser
-import requests
-
-ROOT = Path(__file__).resolve().parents[1]
-SOURCES = json.loads((ROOT / 'sources.json').read_text(encoding='utf-8'))
-OUT = ROOT / 'data/news_candidates.json'
-LIMIT = max(1, int(os.getenv('MAX_ITEMS', '30')))
-CUTOFF = datetime.now(timezone.utc) - timedelta(days=14)
-
-# Strong institutional signals (English and German). Scores are editorial heuristics.
-TOPICS = {
-    'funds_etp': (7, r'\b(?:etfs?|etps?|exchange.traded|investment funds?|asset management|fonds|anlagefonds|vermögensverwaltung|fund managers?|collective investment|kollektivanlage|pensionskass\w*|pension funds?)\b'),
-    'tokenization': (7, r'\b(?:tokeni[sz]\w*|security tokens?|sto|rwa|real.world assets?|digitale wertpapiere|tokenisierte\w*)\b'),
-    'stablecoins_payments': (7, r'\b(?:stablecoins?|cbdc|iso.?20022|payment rails?|zahlungsverkehr|zahlungsabwicklung|settlement|digital (?:franc|currency|money)|rlusd|usdc|euroc)\b'),
-    'custody_banking': (7, r'\b(?:custod\w*|verwahr\w*|depotbank|crypto.bank\w*|krypto.bank\w*|trust bank|banklizenz|banking licen[cs]e|banking infrastructure|paying agent|prime broker\w*)\b'),
-    'regulation': (6, r'\b(?:finma|fsc|bis|basel committee|regulat\w*|aufsicht\w*|licen[cs]\w*|genehmigung\w*|zulassung\w*|compliance|capital requirements|kapitalanforderung\w*)\b'),
-    'market_infrastructure': (6, r'\b(?:six swiss exchange|sdx|central securities depositor\w*|clearing|exchange infrastructure|marktinfrastruktur|wertpapierabwicklung|interoperabilit\w*|institutional adoption)\b'),
-}
-DIGITAL = re.compile(r'\b(?:bitcoin|btc|ethereum|ether|binance|coinbase|bybit|ripple|crypto\w*|krypto\w*|blockchain|digital assets?|digitale vermögenswerte|defi|token\w*|stablecoin\w*)\b', re.I)
-INSTITUTIONAL = re.compile(r'\b(?:bank\w*|finanzinstitut\w*|institution\w*|investor\w*|fonds|fund\w*|etf\w*|etp\w*|finma|snb|six|sdx|custod\w*|verwahr\w*|regulat\w*|aufsicht\w*|settlement|zahlung\w*|lizenz\w*|licen[cs]\w*|treasury|wertpapier\w*|kapitalmarkt\w*|capital market\w*|asset manag\w*|vermögensverwalt\w*|pension\w*|rwa|tokeni[sz]\w*|stablecoin\w*|cbdc|paying agent|central bank|zentralbank)\b', re.I)
-RISK = re.compile(r'\b(?:hack\w*|breach\w*|cyber\w*|theft|diebstahl|exploit\w*|insolven\w*|bankrupt\w*|liquidit\w*|liquidit[yä]\w*|withdrawal\w*|abhebung\w*|sanction\w*|sanktion\w*|systemic|systemisch\w*|fraud|betrug|outage\w*|ausfall\w*)\b', re.I)
-MAJOR_RISK = re.compile(r'\b(?:mrd\.?|billion|milliard\w*|systemic|systemisch|bankrupt\w*|insolven\w*|custod\w*|verwahr\w*|reserves?|reserven|settlement|abwicklung|withdrawal\w*|abhebung\w*)\b', re.I)
-PRICE_ONLY = re.compile(r'\b(?:kurs\w*|preis\w*|price|trading below|f[aä]llt unter|rutscht unter|chart\w*|technical analysis|marktkommentar|correlation|korrelation|rendite\w*|high.beta|fed.zinsentscheid)\b', re.I)
-TRACKING = {'utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid','gclid','mc_cid','mc_eid'}
+def story_group(item):
+    """Group repeated reports about the same major incident."""
+    title = clean(item['original_title']).lower()
+    if re.search(r'binance', title) and re.search(r'hack|diebstahl|breach|angriff', title):
+        return 'binance-security-incident'
+    return None
 
 
-def https(url):
-    p = urlparse(url)
-    return p.scheme == 'https' and bool(p.hostname) and not p.username and not p.password
+def main():
+    previous = {'candidates': []}
+    if OUT.exists():
+        try:
+            previous = json.loads(OUT.read_text(encoding='utf-8'))
+        except (ValueError, OSError) as exc:
+            print(f'WARNING: Cannot read previous candidates: {exc}', file=sys.stderr)
+
+    gathered = []
+    successful_sources = 0
+    for src in SOURCES:
+        name = src.get('name', 'unknown')
+        try:
+            feed_url = src['feed_url']
+            if not https(feed_url):
+                raise ValueError('Feed must use HTTPS')
+            response = requests.get(feed_url, timeout=20, headers={
+                'User-Agent': 'SDAH-NewsCollector/1.0 (+https://swissdigitalassethub.ch/)'
+            })
+            response.raise_for_status()
+            feed = feedparser.parse(response.content)
+            if not feed.entries:
+                print(f'NO RSS ENTRIES: {name}', file=sys.stderr)
+            successful_sources += 1
+            accepted = 0
+            for entry in feed.entries[:50]:
+                url = str(entry.get('link', '')).strip()
+                if not https(url):
+                    continue
+                date_tuple = entry.get('published_parsed') or entry.get('updated_parsed')
+                date = datetime(*date_tuple[:6], tzinfo=timezone.utc) if date_tuple else None
+                if date and date < CUTOFF:
+                    continue
+                title = clean(entry.get('title', ''), 250)
+                excerpt = clean(entry.get('summary', ''))
+                result = classify(title, excerpt)
+                if result is None:
+                    continue
+                score, topics = result
+                canonical = canonical_url(url)
+                gathered.append({
+                    'id': hashlib.sha256(canonical.encode()).hexdigest()[:16],
+                    'source_name': name,
+                    'source_url': canonical,
+                    'original_title': title,
+                    'published_at': date.date().isoformat() if date else '',
+                    'source_excerpt': excerpt,
+                    'review_status': 'unreviewed',
+                    'relevance_score': score,
+                    'matched_topics': topics,
+                })
+                accepted += 1
+            print(f'SOURCE: {name}; scanned: {min(len(feed.entries), 50)}; relevant: {accepted}')
+        except Exception as exc:
+            print(f'SOURCE ERROR: {name}: {exc}', file=sys.stderr)
+
+    # Keep older candidates only when all feeds fail; never silently erase data.
+    if successful_sources == 0:
+        print('ERROR: No RSS sources were successfully fetched; existing data left unchanged.', file=sys.stderr)
+        sys.exit(1)
+
+    # Reclassify previously saved candidates so old price-only items do not survive.
+    for old in previous.get('candidates', []):
+        if not isinstance(old, dict) or not https(old.get('source_url', '')):
+            continue
+        date_str = old.get('published_at', '')
+        try:
+            if date_str and datetime.fromisoformat(date_str).replace(tzinfo=timezone.utc) < CUTOFF:
+                continue
+        except (TypeError, ValueError):
+            continue
+        title = clean(old.get('original_title', ''), 250)
+        excerpt = clean(old.get('source_excerpt', ''))
+        result = classify(title, excerpt)
+        if result is None:
+            continue
+        score, topics = result
+        canonical = canonical_url(old['source_url'])
+        gathered.append({
+            'id': hashlib.sha256(canonical.encode()).hexdigest()[:16],
+            'source_name': old.get('source_name', ''),
+            'source_url': canonical,
+            'original_title': title,
+            'published_at': date_str,
+            'source_excerpt': excerpt,
+            'review_status': old.get('review_status', 'unreviewed'),
+            'relevance_score': score,
+            'matched_topics': topics,
+        })
+
+    gathered.sort(key=lambda x: (x['relevance_score'], x['published_at']), reverse=True)
+    selected = []
+    groups = set()
+    for candidate in gathered:
+        group = story_group(candidate)
+        if group and group in groups:
+            continue
+        if any(same_story(candidate, existing) for existing in selected):
+            continue
+        selected.append(candidate)
+        if group:
+            groups.add(group)
+        if len(selected) >= LIMIT:
+            break
+
+    OUT.parent.mkdir(parents=True, exist_ok=True)
+    output = json.dumps({'candidates': selected}, ensure_ascii=False, indent=2) + '\n'
+    if not OUT.exists() or OUT.read_text(encoding='utf-8') != output:
+        OUT.write_text(output, encoding='utf-8')
+    print(f'Collected: {len(gathered)} relevant entries; saved candidates: {len(selected)}; no AI API; no public publishing')
 
 
-def canonical_url(url):
-    p = urlparse(url.strip())
-    query = urlencode([(k,v) for k,v in parse_qsl(p.query, keep_blank_values=True) if k.lower() not in TRACKING])
-    return urlunparse((p.scheme.lower(), p.netloc.lower(), p.path.rstrip('/') or '/', '', query, ''))
-
-
-def clean(s, limit=900):
-    s = re.sub(r'<[^>]*>', ' ', str(s or ''))
-    return re.sub(r'\s+', ' ', html.unescape(s)).strip()[:limit]
-
-
-def classify(title, excerpt):
-    title, excerpt = clean(title, 250), clean(excerpt)
-    body = f'{title} {excerpt}'
-    matches = [key for key, (_, pattern) in TOPICS.items() if re.search(pattern, body, re.I)]
-    digital = bool(DIGITAL.search(body))
-    institutional = bool(INSTITUTIONAL.search(body))
-    risk = bool(RISK.search(body))
-    major_risk = risk and bool(MAJOR_RISK.search(body))
-    # Institutional financial innovation, or a consequential risk for institutions.
-    if not ((digital and institutional) or (risk and major_risk and digital) or (risk and institutional and major_risk)):
-        return None
-    if PRICE_ONLY.search(title) and not (re.search(r'\b(?:etf|etp|fund|fonds|bank|regulat|finma|tokeni[sz]|stablecoin|custod|liquidit|liquidit[yä])\w*\b', body, re.I) or major_risk):
-        return None
-    if risk and not major_risk and not any(t in matches for t in ('custody_banking','stablecoins_payments','market_infrastructure','regulation')):
-        return None
-    if not matches and not major_risk:
-        return None
-    score = sum(TOPICS[k][0] for k in matches)
-    if digital: score += 3
-    if institutional: score += 3
-    if major_risk: score += 5
-    if risk and 'institutional_risk' not in matches: matches.append('institutional_risk')
-    return score, matches
-
-
-def cluster_key(title):
-    text = clean(title).lower()
-    text = re.sub(r'[^\w\s]', ' ', text)
-    stop = {'der','die','das','und','mit','nach','von','für','bei','den','dem','ein','eine','the','and','with','from','after','into','über','wie','des','auf','sich','ist','will','news'}
-    return ' '.join(sorted(set(w for w in text.split() if len(w) > 2 and w not in stop)))
-
-
-def same_story(a, b):
-    if canonical_url(a['source_url']) == canonical_url(b['source_url']):
-        return True
-    ka, kb = cluster_key(a['original_title']), cluster_key(b['original_title'])
-    if not ka or not kb: return False
-    wa, wb = set(ka.split()), set(kb.split())
-    # Require substantial lexical overlap; avoids merging all articles on Bitcoin.
-    return len(wa & wb) >= 3 and (len(wa & wb) / min(len(wa), len(wb)) >= .72 or SequenceMatcher(None, ka, kb).ratio() >= .80)
-
-"""SDAH institutional RSS candidate collector. Free, review-only; never publishes."""
-import hashlib
-import html
-import json
-import os
-import re
-import sys
-from datetime import datetime, timedelta, timezone
-from difflib import SequenceMatcher
-from pathlib import Path
-from urllib.parse import parse_qsl, urlencode, urlparse, urlunparse
-
-import feedparser
-import requests
-
-ROOT = Path(__file__).resolve().parents[1]
-SOURCES = json.loads((ROOT / 'sources.json').read_text(encoding='utf-8'))
-OUT = ROOT / 'data/news_candidates.json'
-LIMIT = max(1, int(os.getenv('MAX_ITEMS', '30')))
-CUTOFF = datetime.now(timezone.utc) - timedelta(days=14)
-
-# Strong institutional signals (English and German). Scores are editorial heuristics.
-TOPICS = {
-    'funds_etp': (7, r'\b(?:etfs?|etps?|exchange.traded|investment funds?|asset management|fonds|anlagefonds|vermögensverwaltung|fund managers?|collective investment|kollektivanlage|pensionskass\w*|pension funds?)\b'),
-    'tokenization': (7, r'\b(?:tokeni[sz]\w*|security tokens?|sto|rwa|real.world assets?|digitale wertpapiere|tokenisierte\w*)\b'),
-    'stablecoins_payments': (7, r'\b(?:stablecoins?|cbdc|iso.?20022|payment rails?|zahlungsverkehr|zahlungsabwicklung|settlement|digital (?:franc|currency|money)|rlusd|usdc|euroc)\b'),
-    'custody_banking': (7, r'\b(?:custod\w*|verwahr\w*|depotbank|crypto.bank\w*|krypto.bank\w*|trust bank|banklizenz|banking licen[cs]e|banking infrastructure|paying agent|prime broker\w*)\b'),
-    'regulation': (6, r'\b(?:finma|fsc|bis|basel committee|regulat\w*|aufsicht\w*|licen[cs]\w*|genehmigung\w*|zulassung\w*|compliance|capital requirements|kapitalanforderung\w*)\b'),
-    'market_infrastructure': (6, r'\b(?:six swiss exchange|sdx|central securities depositor\w*|clearing|exchange infrastructure|marktinfrastruktur|wertpapierabwicklung|interoperabilit\w*|institutional adoption)\b'),
-}
-DIGITAL = re.compile(r'\b(?:bitcoin|btc|ethereum|ether|binance|coinbase|bybit|ripple|crypto\w*|krypto\w*|blockchain|digital assets?|digitale vermögenswerte|defi|token\w*|stablecoin\w*)\b', re.I)
-INSTITUTIONAL = re.compile(r'\b(?:bank\w*|finanzinstitut\w*|institution\w*|investor\w*|fonds|fund\w*|etf\w*|etp\w*|finma|snb|six|sdx|custod\w*|verwahr\w*|regulat\w*|aufsicht\w*|settlement|zahlung\w*|lizenz\w*|licen[cs]\w*|treasury|wertpapier\w*|kapitalmarkt\w*|capital market\w*|asset manag\w*|vermögensverwalt\w*|pension\w*|rwa|tokeni[sz]\w*|stablecoin\w*|cbdc|paying agent|central bank|zentralbank)\b', re.I)
-RISK = re.compile(r'\b(?:hack\w*|breach\w*|cyber\w*|theft|diebstahl|exploit\w*|insolven\w*|bankrupt\w*|liquidit\w*|liquidit[yä]\w*|withdrawal\w*|abhebung\w*|sanction\w*|sanktion\w*|systemic|systemisch\w*|fraud|betrug|outage\w*|ausfall\w*)\b', re.I)
-MAJOR_RISK = re.compile(r'\b(?:mrd\.?|billion|milliard\w*|systemic|systemisch|bankrupt\w*|insolven\w*|custod\w*|verwahr\w*|reserves?|reserven|settlement|abwicklung|withdrawal\w*|abhebung\w*)\b', re.I)
-PRICE_ONLY = re.compile(r'\b(?:kurs\w*|preis\w*|price|trading below|f[aä]llt unter|rutscht unter|chart\w*|technical analysis|marktkommentar|correlation|korrelation|rendite\w*|high.beta|fed.zinsentscheid)\b', re.I)
-TRACKING = {'utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid','gclid','mc_cid','mc_eid'}
-
-
-def https(url):
-    p = urlparse(url)
-    return p.scheme == 'https' and bool(p.hostname) and not p.username and not p.password
-
-
-def canonical_url(url):
-    p = urlparse(url.strip())
-    query = urlencode([(k,v) for k,v in parse_qsl(p.query, keep_blank_values=True) if k.lower() not in TRACKING])
-    return urlunparse((p.scheme.lower(), p.netloc.lower(), p.path.rstrip('/') or '/', '', query, ''))
-
-
-def clean(s, limit=900):
-    s = re.sub(r'<[^>]*>', ' ', str(s or ''))
-    return re.sub(r'\s+', ' ', html.unescape(s)).strip()[:limit]
-
-
-def classify(title, excerpt):
-    title, excerpt = clean(title, 250), clean(excerpt)
-    body = f'{title} {excerpt}'
-    matches = [key for key, (_, pattern) in TOPICS.items() if re.search(pattern, body, re.I)]
-    digital = bool(DIGITAL.search(body))
-    institutional = bool(INSTITUTIONAL.search(body))
-    risk = bool(RISK.search(body))
-    major_risk = risk and bool(MAJOR_RISK.search(body))
-    # Institutional financial innovation, or a consequential risk for institutions.
-    if not ((digital and institutional) or (risk and major_risk and digital) or (risk and institutional and major_risk)):
-        return None
-    if PRICE_ONLY.search(title) and not (re.search(r'\b(?:etf|etp|fund|fonds|bank|regulat|finma|tokeni[sz]|stablecoin|custod|liquidit|liquidit[yä])\w*\b', body, re.I) or major_risk):
-        return None
-    if risk and not major_risk and not any(t in matches for t in ('custody_banking','stablecoins_payments','market_infrastructure','regulation')):
-        return None
-    if not matches and not major_risk:
-        return None
-    score = sum(TOPICS[k][0] for k in matches)
-    if digital: score += 3
-    if institutional: score += 3
-    if major_risk: score += 5
-    if risk and 'institutional_risk' not in matches: matches.append('institutional_risk')
-    return score, matches
-
-
-def cluster_key(title):
-    text = clean(title).lower()
-    text = re.sub(r'[^\w\s]', ' ', text)
-    stop = {'der','die','das','und','mit','nach','von','für','bei','den','dem','ein','eine','the','and','with','from','after','into','über','wie','des','auf','sich','ist','will','news'}
-    return ' '.join(sorted(set(w for w in text.split() if len(w) > 2 and w not in stop)))
-
-
-def same_story(a, b):
-    if canonical_url(a['source_url']) == canonical_url(b['source_url']):
-        return True
-    ka, kb = cluster_key(a['original_title']), cluster_key(b['original_title'])
-    if not ka or not kb: return False
-    wa, wb = set(ka.split()), set(kb.split())
-    # Require substantial lexical overlap; avoids merging all articles on Bitcoin.
-    return len(wa & wb) >= 3 and (len(wa & wb) / min(len(wa), len(wb)) >= .72 or SequenceMatcher(None, ka, kb).ratio() >= .80)
-    if __name__ == "__main__":
-        main()
-
+if __name__ == '__main__':
+    main()
