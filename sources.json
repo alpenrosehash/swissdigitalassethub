@@ -9,11 +9,11 @@
   },
   {
     "name": "Crypto Valley Journal",
-    "feed_url": "https://freenewsapi.ai/v1/rss?host=cvj.ch&size=50"
+    "feed_url": "https://cvj.ch/feed/"
   },
   {
     "name": "SWI swissinfo.ch",
-    "feed_url": "https://freenewsapi.ai/v1/rss?host=www.swissinfo.ch&size=50"
+    "feed_url": "https://www.swissinfo.ch/service/ger/rssxml/top-news/rss"
   },
   {
     "name": "finews.ch",
