@@ -1,4 +1,22 @@
 [
-  {"name":"FINMA", "https://www.finma.ch/en/rss/news/"},
-  {"name":"Swiss National Bank", "feed_url":"https://www.snb.ch/en/publications/communication/rss"}
+  {
+    "name": "FINMA",
+    "feed_url": "https://www.finma.ch/en/rss/news/"
+  },
+  {
+    "name": "Swiss National Bank",
+    "feed_url": "https://www.snb.ch/en/publications/communication/rss"
+  },
+  {
+    "name": "Crypto Valley Journal",
+    "feed_url": "https://freenewsapi.ai/v1/rss?host=cvj.ch&size=50"
+  },
+  {
+    "name": "SWI swissinfo.ch",
+    "feed_url": "https://freenewsapi.ai/v1/rss?host=www.swissinfo.ch&size=50"
+  },
+  {
+    "name": "finews.ch",
+    "feed_url": "https://freenewsapi.ai/v1/rss?host=finews.ch&size=50"
+  }
 ]
