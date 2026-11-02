@@ -187,4 +187,6 @@ def same_story(a, b):
     wa, wb = set(ka.split()), set(kb.split())
     # Require substantial lexical overlap; avoids merging all articles on Bitcoin.
     return len(wa & wb) >= 3 and (len(wa & wb) / min(len(wa), len(wb)) >= .72 or SequenceMatcher(None, ka, kb).ratio() >= .80)
+    if __name__ == "__main__":
+    main()
 
