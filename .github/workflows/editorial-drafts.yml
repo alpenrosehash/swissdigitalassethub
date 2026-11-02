@@ -1,1 +1,45 @@
 
+name: SDAH AI editorial drafts
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '20 6 * * 1-5'
+
+permissions:
+  contents: read
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Collect and analyze (no public publishing)
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: gpt-4.1-mini
+          MAX_ITEMS: '3'
+        run: python scripts/collect.py
+      - name: Create editorial review PR
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ -z "$(git status --porcelain -- drafts data/seen.json)" ]; then
+            echo 'No new drafts'; exit 0
+          fi
+          branch="editorial/drafts-${GITHUB_RUN_ID}"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git checkout -b "$branch"
+          git add drafts data/seen.json
+          git commit -m 'Editorial: propose AI news drafts'
+          git push origin "$branch"
+          gh pr create --base "${GITHUB_DEFAULT_BRANCH:-main}" --head "$branch" --title 'Review: AI Swiss finance news drafts' --body 'AI-generated drafts only. Verify original sources and factual claims. Merging this PR does NOT publish articles. Publish approved drafts separately with scripts/publish.py.'
+  
