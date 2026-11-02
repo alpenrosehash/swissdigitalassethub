@@ -1,4 +1,4 @@
 [
-  {"name":"FINMA", "feed_url":"https://www.finma.ch/en/rss/"},
+  {"name":"FINMA", "https://www.finma.ch/en/rss/news/"},
   {"name":"Swiss National Bank", "feed_url":"https://www.snb.ch/en/publications/communication/rss"}
 ]
