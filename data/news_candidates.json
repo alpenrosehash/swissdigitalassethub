@@ -1,0 +1,18 @@
+{
+  "candidates": [
+    {
+      "id": "b069f3c807531de9",
+      "source_name": "FINMA",
+      "source_url": "https://www.finma.ch/en/news/2026/10/20261020-mm-finma-bitcoin-etf/",
+      "original_title": "FINMA approves Switzerland’s first Bitcoin ETF",
+      "published_at": "2026-10-20",
+      "source_excerpt": "The Swiss Financial Market Supervisory Authority FINMA has approved the first retail fund to invest directly in Bitcoin, prioritising investor protection and transparency.",
+      "review_status": "unreviewed",
+      "relevance_score": 18,
+      "matched_topics": [
+        "digital_assets",
+        "funds_etp"
+      ]
+    }
+  ]
+}
